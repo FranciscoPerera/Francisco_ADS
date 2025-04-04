@@ -2,7 +2,7 @@
 Repositorio para projetos de trabalho e reposiçao das aulas de ADS !!
 
 # Descrição do Trabalho:
-# O software de folha ponto digitalizará esse processo, permitindo:
+# O software de folha ponto fara esse processo, permitindo:
   •	Registro de Ponto: Marcação digital de entrada, saída e intervalos.
   
   •	Gestão de Jornadas: Configuração de horários, escalas e banco de horas.
