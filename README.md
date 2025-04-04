@@ -5,8 +5,8 @@ Repositorio para as aulas de ADS
 
 # Descrição do Software:
 # O software de folha ponto digitalizará esse processo, permitindo:
-  •	Registro de Ponto: Marcação digital de entrada, saída e intervalos.
-  •	Gestão de Jornadas: Configuração de horários, escalas e banco de horas.
+•	Registro de Ponto: Marcação digital de entrada, saída e intervalos.
+•	Gestão de Jornadas: Configuração de horários, escalas e banco de horas.
 # Relatórios e Monitoramento:
   •	Geração de relatórios e alertas sobre atrasos e horas extras.
   •	Acesso e Permissões: Diferentes níveis de acesso para funcionários e administradores.
