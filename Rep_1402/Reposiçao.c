@@ -1,9 +1,3 @@
-/* Utilizando os conhecimentos construídos na ultima semana e toda sua criatividade, */
-/* crie um programa em python E linguagem C que atenda os seguintes requisitos: */
-/* 1. Precisa usar ao menos 2 variáveis; */
-/* 2. Precisa usar ao menos 2 estruturas condicionais; */
-/* 3. Precisa ao menos ter uma comunicação de entrada e outra de saída com o usuário. */
-
 #include <stdio.h>
 
 int main() {
@@ -25,15 +19,17 @@ int main() {
     printf("%s, seu IMC e %.2f.\n", nome, imc);
 
     if (imc < 18.5) {
-        printf("Classificado como: Magreza\n");
+        printf("Classificado como: Abaixo do peso\n");
     } else if (imc < 24.9) {
-        printf("Classificado como: Normal\n");
+        printf("Classificado como: Peso normal\n");
     } else if (imc < 29.9) {
         printf("Classificado como: Sobrepeso\n");
+    } else if (imc < 34.9) {
+        printf("Classificado como: Obesidade grau 1\n");
     } else if (imc < 39.9) {
-        printf("Classificado como: Obesidade\n");
+        printf("Classificado como: Obesidade grau 2\n");
     } else {
-        printf("Classificado como: Obesidade Grave\n");
+        printf("Classificado como: Obesidade grau 3\n");
     }
 
 }
