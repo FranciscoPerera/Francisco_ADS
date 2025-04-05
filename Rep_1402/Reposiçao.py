@@ -22,8 +22,15 @@ def classificar_imc(imc):
     else:
         return "Obesidade grau 3"
 
+def prof(nome):
+    if nome.strip().lower() == "aguado":
+        print("Não interessa. Você está perfeito!!")
+        exit()
+
+print("--------------Calculador de IMC----------")
 nome = input("Qual seu nome: ")
-peso = float(input("Digite seu peso em kg: "))
+prof(nome)
+peso = float(input("Digite seu peso (em kg): "))
 altura = float(input("Digite sua altura em metros(Ex.1.80): "))
     
 imc = calcular_imc(peso, altura)
@@ -31,4 +38,3 @@ classificacao = classificar_imc(imc)
     
 print(f"{nome} seu IMC é: {imc:.2f}")
 print(f"Classificado como: {classificacao}")
-
