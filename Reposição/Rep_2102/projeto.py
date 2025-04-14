@@ -1,23 +1,25 @@
-# Sócio do Clube Delta OU ela tiver mais de 60 = 10,00
-# Sócio do Clube Delta + Aniversariante daquele dia =  5,00
-# Compra > 100,00
-socio = 0
-maior = 0
-aniv = 0
+# Melhore o programa que desenvolvemos no item 3 da lista de exercícios, para que o usuário apenas precise informar:
+# - Valor da compra; - Data de Nascimento; - Se é ou não sócio do clube;
+# DICA: Vocês precisam descobrir como a) obter a data do computador em Python; b) como fazer operações com datas.
+
+from datetime import datetime
 
 valor = float(input("Digite o valor da compra: "))
-if(valor >= 100.00):
-    socio = int(input("Digite 1 se você for socio do Clube Delta ou 0 se não: "))
-    maior = int(input("Digite 1 se você for 60+ ou 0 se não: "))
-    aniv = int(input("Digite 1 se hoje for seu aniversario ou 0 se não "))
+data_nascimento = input("Digite sua data de nascimento (formato DD/MM/AAAA): ")
+socio = int(input("Digite 1 se você for sócio do Clube Delta ou 0 se não: "))
 
-if(valor < 100):
-    valor = valor
-elif ((socio == 1) and (aniv == 1)):
-    valor = valor - 15.00
-elif ((socio == 1) and (aniv == 0)) or (maior == 1):
-   valor = valor - 10.00  
-else:
-   valor = valor   
+# Processamento da data de nascimento
+data_nascimento = datetime.strptime(data_nascimento, "%d/%m/%Y")
+hoje = datetime.now()
+idade = hoje.year - data_nascimento.year - ((hoje.month, hoje.day) < (data_nascimento.month, data_nascimento.day))
 
-print(f"Valor total da compra: R$ {valor}")
+# Verifica se é aniversário
+aniversario = (hoje.day == data_nascimento.day and hoje.month == data_nascimento.month)
+
+if valor >= 100.00:
+    if socio == 1 and aniversario:
+        valor -= 15.00
+    elif socio == 1 or idade >= 60:
+        valor -= 10.00
+
+print(f"Valor total da compra: R$ {valor:.2f}")
