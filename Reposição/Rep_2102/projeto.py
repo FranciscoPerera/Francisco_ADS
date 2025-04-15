@@ -4,22 +4,6 @@
 
 from datetime import datetime
 
-print("------------Mercado Delta--------------")
-
-valor = float(input("Digite o valor da compra: R$ "))
-data_nasc = input("Digite sua data de nascimento (formato DD/MM/AAAA): ")
-socio = input("Você é sócio do Clube Delta? (sim/nao): ").lower()
-
-# Converte a data de nascimento para um objeto datetime
-data_nasc = datetime.strptime(data_nasc, "%d/%m/%Y")
-hoje = datetime.now()
-
-# Calcula a idade do usuário
-idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month, data_nasc.day))
-
-# Verifica se hoje é o aniversário do usuário
-aniversario = (hoje.day == data_nasc.day and hoje.month == data_nasc.month)
-
 def calcular_valor(valor, idade, socio, aniversario):
     desconto = 0
     if valor > 100:
@@ -29,6 +13,32 @@ def calcular_valor(valor, idade, socio, aniversario):
             desconto += 5
     return valor - desconto
 
-valor_final = calcular_valor(valor, idade, socio, aniversario)
+while True:
+    print("\n------------Mercado Delta--------------")
+    print("1. Calcular valor da compra")
+    print("2. Sair")
+    opcao = input("Escolha uma opção: ")
 
-print(f"O valor total da compra é: R$ {valor_final:.2f}")
+    if opcao == "1":
+        valor = float(input("Digite o valor da compra: R$ "))
+        data_nasc = input("Digite sua data de nascimento (formato DD/MM/AAAA): ")
+        socio = input("Você é sócio do Clube Delta? (sim/nao): ").lower()
+
+        # Converte a data de nascimento para um objeto datetime
+        data_nasc = datetime.strptime(data_nasc, "%d/%m/%Y")
+        hoje = datetime.now()
+
+        # Calcula a idade do usuário
+        idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month, data_nasc.day))
+
+        # Verifica se hoje é o aniversário do usuário
+        aniversario = (hoje.day == data_nasc.day and hoje.month == data_nasc.month)
+
+        valor_final = calcular_valor(valor, idade, socio, aniversario)
+
+        print(f"O valor total da compra é: R$ {valor_final:.2f}")
+    elif opcao == "2":
+        print("Obrigado por usar o Mercado Delta.")
+        break
+    else:
+        print("Opção inválida. Tente novamente.")
