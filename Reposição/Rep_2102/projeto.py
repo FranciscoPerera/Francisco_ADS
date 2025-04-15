@@ -1,22 +1,16 @@
-# Melhore o programa que desenvolvemos no item 3 da lista de exercícios, para que o usuário apenas precise informar:
-# - Valor da compra; - Data de Nascimento; - Se é ou não sócio do clube;
-# DICA: Vocês precisam descobrir como a) obter a data do computador em Python; b) como fazer operações com datas.
+# O supermercado Delta está fazendo uma promoção. Se a pessoa for sócio do Clube Delta ou ela tiver mais de 60 anos, terá R$10,00 de desconto no valor total da compra. 
+# Além disso, para os sócio do Clube Delta que estão fazendo aniversário naquele dia, haverá um desconto adicional de R$ 5,00. Esses descontos todos são validos 
+# somente para compras acima de R$ 100,00. Faça o melhor software possível, que receba as informações necessárias do usuário e ao final diga o valor total da compra.
 
 from datetime import datetime
 
-def calcular_valor_com_desconto(valor, idade, socio, aniversario):
-    if valor >= 100.00:
-        if socio == 1 and aniversario:
-            return valor - 15.00
-        elif socio == 1 or idade >= 60:
-            return valor - 10.00
-    return valor
+print("------------Mercado Delta--------------")
 
-valor = float(input("Digite o valor da compra: "))
+valor = float(input("Digite o valor da compra: R$ "))
 data_nasc = input("Digite sua data de nascimento (formato DD/MM/AAAA): ")
-socio = int(input("Digite 1 se você for sócio do Clube Delta ou 0 se não: "))
+socio = input("Você é sócio do Clube Delta? (sim/nao): ").lower()
 
-# Converte a data de nascimento de string para datetime
+# Converte a data de nascimento para um objeto datetime
 data_nasc = datetime.strptime(data_nasc, "%d/%m/%Y")
 hoje = datetime.now()
 
@@ -26,6 +20,15 @@ idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month,
 # Verifica se hoje é o aniversário do usuário
 aniversario = (hoje.day == data_nasc.day and hoje.month == data_nasc.month)
 
-valor_final = calcular_valor_com_desconto(valor, idade, socio, aniversario)
+def calcular_valor(valor, idade, socio, aniversario):
+    desconto = 0
+    if valor > 100:
+        if socio == "sim" or idade >= 60:
+            desconto += 10
+        if socio == "sim" and aniversario:
+            desconto += 5
+    return valor - desconto
 
-print(f"Valor total da compra: R$ {valor_final:.2f}")
+valor_final = calcular_valor(valor, idade, socio, aniversario)
+
+print(f"O valor total da compra é: R$ {valor_final:.2f}")
