@@ -3,7 +3,7 @@
 int main() {
     char nome[20];
     float peso, altura, imc;
-    int resp;
+    int resp = 1;
 
     do
     {
@@ -38,6 +38,6 @@ int main() {
         printf("Digite 1 para continuar ou 2 para sair\n");
         scanf("%d", &resp);
 
-    }while (resp == 1);
+    }while (resp);
 
 }
