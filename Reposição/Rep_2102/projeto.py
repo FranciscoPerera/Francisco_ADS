@@ -2,28 +2,34 @@
 # - Valor da compra; - Data de Nascimento; - Se é ou não sócio do clube;
 # DICA: Vocês precisam descobrir como a) obter a data do computador em Python; b) como fazer operações com datas.
 
-from datetime import datetime 
+from datetime import datetime
 
+# Função para calcular o valor com desconto
+def calcular_valor_com_desconto(valor, idade, socio, aniversario):
+    if valor >= 100.00:
+        if socio == 1 and aniversario:
+            return valor - 15.00
+        elif socio == 1 or idade >= 60:
+            return valor - 10.00
+    return valor
+
+# Entrada de dados do usuário
 valor = float(input("Digite o valor da compra: "))
 data_nasc = input("Digite sua data de nascimento (formato DD/MM/AAAA): ")
 socio = int(input("Digite 1 se você for sócio do Clube Delta ou 0 se não: "))
-data_nasc = datetime.strptime(data_nasc, "%d/%m/%Y") # Converte a data de nascimento de string para datetime.
-hoje = datetime.now() # Pega a data atual
 
-# Calcula a idade do usuário com base na data de nascimento e na data atual.
-# Subtrai o ano de nascimento do ano atual e ajusta caso o aniversário ainda não tenha ocorrido este ano.
+# Converte a data de nascimento de string para datetime
+data_nasc = datetime.strptime(data_nasc, "%d/%m/%Y")
+hoje = datetime.now()
+
+# Calcula a idade do usuário
 idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month, data_nasc.day))
 
-# Verifica se hoje é o aniversário do usuário.
+# Verifica se hoje é o aniversário do usuário
 aniversario = (hoje.day == data_nasc.day and hoje.month == data_nasc.month)
 
-# Aplica descontos ao valor da compra, caso o valor seja maior ou igual a R$ 100,00.
-if valor >= 100.00:
-    desconto = 0
-    if socio == 1 and aniversario:
-        desconto = 10
-    elif socio == 1 or idade >= 60:
-        desconto = 5
-    return valor - desconto
+# Calcula o valor final com desconto
+valor_final = calcular_valor_com_desconto(valor, idade, socio, aniversario)
 
-print(f"Valor total da compra: R$ {valor:.2f}")
+# Exibe o valor total da compra
+print(f"Valor total da compra: R$ {valor_final:.2f}")
