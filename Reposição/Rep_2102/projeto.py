@@ -4,7 +4,6 @@
 
 from datetime import datetime
 
-# Função para calcular o valor com desconto
 def calcular_valor_com_desconto(valor, idade, socio, aniversario):
     if valor >= 100.00:
         if socio == 1 and aniversario:
@@ -13,7 +12,6 @@ def calcular_valor_com_desconto(valor, idade, socio, aniversario):
             return valor - 10.00
     return valor
 
-# Entrada de dados do usuário
 valor = float(input("Digite o valor da compra: "))
 data_nasc = input("Digite sua data de nascimento (formato DD/MM/AAAA): ")
 socio = int(input("Digite 1 se você for sócio do Clube Delta ou 0 se não: "))
@@ -28,8 +26,6 @@ idade = hoje.year - data_nasc.year - ((hoje.month, hoje.day) < (data_nasc.month,
 # Verifica se hoje é o aniversário do usuário
 aniversario = (hoje.day == data_nasc.day and hoje.month == data_nasc.month)
 
-# Calcula o valor final com desconto
 valor_final = calcular_valor_com_desconto(valor, idade, socio, aniversario)
 
-# Exibe o valor total da compra
 print(f"Valor total da compra: R$ {valor_final:.2f}")
