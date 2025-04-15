@@ -3,33 +3,41 @@
 int main() {
     char nome[20];
     float peso, altura, imc;
+    int resp;
 
-    printf("Qual seu nome? ");
-    scanf("%s", nome);
+    do
+    {
+        printf("Qual seu nome? ");
+        scanf("%s", nome);
 
-    printf("Qual seu peso em kg? ");
-    scanf("%f", &peso);
+        printf("Qual seu peso em kg? ");
+        scanf("%f", &peso);
 
-    printf("Qual sua altura em cm? ");
-    scanf("%f", &altura);
+        printf("Qual sua altura em cm? ");
+        scanf("%f", &altura);
 
-    altura = altura / 100;
-    imc = peso / (altura * altura);
+        altura = altura / 100;
+        imc = peso / (altura * altura);
 
-    printf("%s, seu IMC e %.2f.\n", nome, imc);
+        printf("%s, seu IMC e %.2f.\n", nome, imc);
 
-    if (imc < 18.5) {
-        printf("Classificado como: Abaixo do peso\n");
-    } else if (imc < 24.9) {
-        printf("Classificado como: Peso normal\n");
-    } else if (imc < 29.9) {
-        printf("Classificado como: Sobrepeso\n");
-    } else if (imc < 34.9) {
-        printf("Classificado como: Obesidade grau 1\n");
-    } else if (imc < 39.9) {
-        printf("Classificado como: Obesidade grau 2\n");
-    } else {
-        printf("Classificado como: Obesidade grau 3\n");
-    }
+        if (imc < 18.5) {
+            printf("Classificado como: Abaixo do peso\n");
+        } else if (imc < 24.9) {
+            printf("Classificado como: Peso normal\n");
+        } else if (imc < 29.9) {
+            printf("Classificado como: Sobrepeso\n");
+        } else if (imc < 34.9) {
+            printf("Classificado como: Obesidade grau 1\n");
+        } else if (imc < 39.9) {
+            printf("Classificado como: Obesidade grau 2\n");
+        } else {
+            printf("Classificado como: Obesidade grau 3\n");
+        }
+
+        printf("Digite 1 para continuar ou 2 para sair\n");
+        scanf("%d", &resp);
+
+    }while (resp == 1);
 
 }
