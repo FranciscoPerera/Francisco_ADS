@@ -17,3 +17,4 @@ for numero in numeros:
         contagem += 1
 
 print(f"Entre os 7 valores, apenas {contagem} são números negativos!")
+
