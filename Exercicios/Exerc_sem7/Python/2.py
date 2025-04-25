@@ -7,3 +7,4 @@
 # d) percentual de pessoas com salário até R$1000,00.
 
 # Faça um software que permita a coleta desses dados e ao final, imprima na tela as informações desejadas.
+
