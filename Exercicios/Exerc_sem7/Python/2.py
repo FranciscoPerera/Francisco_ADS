@@ -8,40 +8,29 @@
 
 # Faça um software que permita a coleta desses dados e ao final, imprima na tela as informações desejadas.
 
-sair = 1
-sai = 1
+sal = []
+fil = []
 
-while (sair != "0"):
-    sal = []
-    fil = []
+while True:
+    salario = float(input("Qual o seu salário? (Digite -1 para sair): "))
+    if salario == -1:
+        break
 
-    while (sai != "1"):
-        
-        salario = int(input("Qual o seu salario: "))
-        filhos = int(input("Quantos filhos voce tem: "))
+    filhos = int(input("Quantos filhos você tem? "))
+    sal.append(salario)
+    fil.append(filhos)
 
-        if salario or filhos == -1:
-            break
-        sal.append(salario)
-        fil.append(filhos)
+    if len(sal) > 0:
+        med_salario = sum(sal) / len(sal)
+        med_filhos = sum(fil) / len(fil)
+        maior = max(sal)
+        percentual = (len([s for s in sal if s <= 1000]) / len(sal)) * 100
 
-        if len(sal) > 0:
-            med_salario = sum(sal) / len(sal)
-            med_filhos = sum(fil) / len(fil)
-            maior = max(sal)
-            percentual = (len([s for s in sal if s <= 1000]) / len(sal)) * 100
-
-    
-            print(f"A media de salario da população é: {med_salario}")
-            print(f"A média do número de filhos é: {med_filhos}")
-            print(f"O maior salario é: {maior}")
-            print(f"O percentual de pessoas com salário até R$1000 é: {percentual}")
-
-        else:
-            print("Nenhum numero digitado.")
-
-        sai = input("Digite 1 pra finanlizar. Ou clique em algo para continuar.  ")
-
-    sair = input("Digite 0 pra finanlizar. Ou clique em algo para continuar.  ")
+        print(f"\nMédia de salário da população: R${med_salario:.2f}")
+        print(f"Média do número de filhos: {med_filhos:.2f}")
+        print(f"Maior salário: R${maior:.2f}")
+        print(f"Percentual com salário até R$1000: {percentual:.2f}%")
+    else:
+        print("Nenhum dado foi inserido.")
 
 
