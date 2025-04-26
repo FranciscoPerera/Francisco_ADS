@@ -23,11 +23,13 @@ while True:
     if len(sal) > 0:
         med_salario = sum(sal) / len(sal)
         med_filhos = sum(fil) / len(fil)
+        menor = min(sal)
         maior = max(sal)
         percentual = (len([s for s in sal if s <= 1000]) / len(sal)) * 100
 
         print(f"\nMédia de salário da população: R${med_salario:.2f}")
         print(f"Média do número de filhos: {med_filhos:.2f}")
+        print(f"Maior salário: R${menor:.2f}")
         print(f"Maior salário: R${maior:.2f}")
         print(f"Percentual com salário até R$1000: {percentual:.2f}%")
     else:
