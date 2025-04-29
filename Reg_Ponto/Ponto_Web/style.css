@@ -17,20 +17,20 @@ table {
   width: 100%;
 }
 
-/* Estiliza cabeçalhos e células de dados com padding e centralização de texto */
+/* Personaliza o cabeçalhos e células de dados com padding e centralização de texto */
 th, td {
   padding: 12px 16px;
   text-align: center;
 }
 
-/* Estiliza os cabeçalhos da tabela com fundo claro, cor de texto escura e peso maior */
+/* Personaliza os cabeçalhos da tabela com fundo claro, cor de texto escura */
 th {
   background-color: #f5f5f5;
   color: #333;
   font-weight: 600;
 }
 
-/* Estiliza as linhas da tabela com cor de fundo e efeito de transição ao mudar de cor */
+/* Personaliza as linhas da tabela com cor de fundo e efeito de transição ao mudar de cor */
 tr {
   background-color: #fff;
   transition: background-color 0.3s ease;
