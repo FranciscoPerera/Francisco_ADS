@@ -28,7 +28,6 @@ def adicionar_ponto(cod, tipo):
     else:
         print("Código inválido!")
 
-
 print("-----------------Folha Ponto------------------")
 usuario = None
 while usuario is None:
