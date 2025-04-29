@@ -20,6 +20,15 @@ registros = {
 def verifica_usuario(cod):
     return codigo.get(cod, None)
 
+# Função para adicionar o ponto
+def adicionar_ponto(cod, tipo):
+    if cod in registros:
+        registros[cod].append(tipo)
+        print(f"Registro de ponto '{tipo}' adicionado para o usuário {codigo[cod]}")
+    else:
+        print("Código inválido!")
+
+
 print("-----------------Folha Ponto------------------")
 usuario = None
 while usuario is None:
