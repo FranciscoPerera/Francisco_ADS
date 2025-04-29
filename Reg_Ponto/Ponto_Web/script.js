@@ -7,10 +7,10 @@ const funcionarios = [
   { codigo: '005', nome: 'Erick Fernandez' }
 ];
 
-// Carrega os registros no localStorage ou cria um array vazio
+// Ao iniciar a pagina, carrega os registros no localStorage ou cria um array vazio
 const registros = JSON.parse(localStorage.getItem('pontos')) || [];
 
-// Quando o usuário digita um código, preenche o campo "nome" automaticamente
+// Quando o inserir o código, preenche o nome automaticamente
 document.getElementById('codigo').addEventListener('input', (e) => {
   const codigo = e.target.value;
   const funcionario = funcionarios.find(f => f.codigo === codigo);
