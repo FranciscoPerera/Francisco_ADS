@@ -1,7 +1,9 @@
 const funcionarios = [
-    { codigo: '001', nome: 'João Silva' },
-    { codigo: '002', nome: 'Maria Souza' },
-    { codigo: '003', nome: 'Carlos Pereira' }
+    { codigo: '001', nome: 'Francisco Pereira' },
+    { codigo: '002', nome: 'Alexandre Aguado' },
+    { codigo: '003', nome: 'Carlos Silva' },
+    { codigo: '004', nome: 'Ana Luiza' },
+    { codigo: '005', nome: 'Erick Fernandez' }
   ];
 
   const registros = JSON.parse(localStorage.getItem('pontos')) || [];

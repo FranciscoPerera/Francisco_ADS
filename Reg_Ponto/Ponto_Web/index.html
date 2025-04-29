@@ -1,51 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR"> 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Folha de Ponto</title>
-  <link rel="icon" href="img/logo.png" type="image/png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
-  </style>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>Folha de Ponto</title> 
+  <link rel="icon" href="img/logo.png" type="image/png"> 
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <link rel="stylesheet" href="style.css"> 
 </head>
-<body class="bg-gray-50 p-6 flex items-center justify-center min-h-screen">
+<body class="bg-gray-50 p-6 flex items-center justify-center min-h-screen"> 
+  <!-- Container principal -->
   <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-4xl">
     <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Folha de Ponto</h1>
-
+    <!-- Campos de entrada -->
     <div class="space-y-4">
-      <input id="codigo" type="text" placeholder="Código do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" readonly />
-      <input id="data" type="date" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input id="codigo" type="text" placeholder="Código do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" /> <!-- Campo para código -->
+      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" readonly /> <!-- Campo para nome, apenas leitura -->
+      <input id="data" type="date" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" /> <!-- Campo de data -->
     </div>
-
+    <!-- Botões de registrar horário -->
     <div class="grid grid-cols-2 gap-4 mt-6">
-      <button onclick="registrar('entrada')" class="btn-green py-3 rounded-lg text-lg font-semibold hover:bg-green-600">Entrada</button>
-      <button onclick="registrar('saidaAlmoco')" class="btn-yellow py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600">Saída Almoço</button>
-      <button onclick="registrar('voltaAlmoco')" class="btn-blue py-3 rounded-lg text-lg font-semibold hover:bg-blue-600">Volta Almoço</button>
-      <button onclick="registrar('saida')" class="btn-red py-3 rounded-lg text-lg font-semibold hover:bg-red-600">Saída</button>
+      <button onclick="registrar('entrada')" class="btn-green py-3 rounded-lg text-lg font-semibold hover:bg-green-600">Entrada</button> <!-- Botão de entrada -->
+      <button onclick="registrar('saidaAlmoco')" class="btn-yellow py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600">Saída Almoço</button> <!-- Botão de saída para almoço -->
+      <button onclick="registrar('voltaAlmoco')" class="btn-blue py-3 rounded-lg text-lg font-semibold hover:bg-blue-600">Volta Almoço</button> <!-- Botão de retorno do almoço -->
+      <button onclick="registrar('saida')" class="btn-red py-3 rounded-lg text-lg font-semibold hover:bg-red-600">Saída</button> <!-- Botão de saída -->
     </div>
-
+    <!-- Título da tabela de registros -->
     <h2 class="text-2xl font-semibold mt-8 mb-4 text-center text-gray-800">Registros</h2>
+    <!-- Container da tabela com rolagem -->
     <div class="table-container overflow-x-auto max-h-64 border rounded-xl">
       <table>
         <thead>
           <tr>
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Data</th>
+            <th>Código</th> 
+            <th>Nome</th> 
+            <th>Data</th> 
             <th>Entrada</th>
-            <th>Almoço (Saída / Volta)</th>
-            <th>Saída</th>
-            <th>Editar</th>
-            <th>Excluir</th>
+            <th>Almoço (Saída / Volta)</th> 
+            <th>Saída</th> 
+            <th>Editar</th> 
+            <th>Excluir</th> 
           </tr>
         </thead>
-        <tbody id="registros"></tbody>
+        <tbody id="registros"></tbody> <!-- Corpo da tabela que será preenchido com os registros via JS -->
       </table>
     </div>
   </div>
-
+  <!-- Importa o script JavaScript com a lógica de funcionamento -->
   <script src="script.js"></script>
 </body>
 </html>
