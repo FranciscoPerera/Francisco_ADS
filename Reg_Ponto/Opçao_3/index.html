@@ -72,8 +72,10 @@
 <body class="bg-gray-50 p-6 flex items-center justify-center min-h-screen">
   <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-4xl">
     <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Folha de Ponto</h1>
+
     <div class="space-y-4">
-      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input id="codigo" type="text" placeholder="Código do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" readonly />
       <input id="data" type="date" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
     </div>
 
@@ -89,6 +91,7 @@
       <table>
         <thead>
           <tr>
+            <th>Código</th>
             <th>Nome</th>
             <th>Data</th>
             <th>Entrada</th>
@@ -104,16 +107,35 @@
   </div>
 
   <script>
+    const funcionarios = [
+      { codigo: '001', nome: 'João Silva' },
+      { codigo: '002', nome: 'Maria Souza' },
+      { codigo: '003', nome: 'Carlos Pereira' }
+    ];
+
     const registros = JSON.parse(localStorage.getItem('pontos')) || [];
 
+    document.getElementById('codigo').addEventListener('input', (e) => {
+      const codigo = e.target.value;
+      const funcionario = funcionarios.find(f => f.codigo === codigo);
+      const nomeField = document.getElementById('nome');
+
+      if (funcionario) {
+        nomeField.value = funcionario.nome;
+      } else {
+        nomeField.value = '';
+      }
+    });
+
     function registrar(tipo) {
+      const codigo = document.getElementById('codigo').value;
       const nome = document.getElementById('nome').value;
       const data = document.getElementById('data').value;
-      if (!nome || !data) return alert("Preencha nome e data.");
+      if (!codigo || !nome || !data) return alert("Preencha código, nome e data.");
 
-      let registro = registros.find(r => r.nome === nome && r.data === data);
+      let registro = registros.find(r => r.codigo === codigo && r.data === data);
       if (!registro) {
-        registro = { nome, data, entrada: '', saidaAlmoco: '', voltaAlmoco: '', saida: '' };
+        registro = { codigo, nome, data, entrada: '', saidaAlmoco: '', voltaAlmoco: '', saida: '' };
         registros.push(registro);
       }
       const horaAtual = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
@@ -128,6 +150,7 @@
       registros.forEach((r, index) => {
         tbody.innerHTML += `
           <tr>
+            <td>${r.codigo}</td>
             <td>${r.nome}</td>
             <td>${r.data}</td>
             <td>${r.entrada}</td>
