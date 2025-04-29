@@ -14,16 +14,16 @@
     <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Folha de Ponto</h1>
     <!-- Campos de entrada -->
     <div class="space-y-4">
-      <input id="codigo" type="text" placeholder="Código do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" /> <!-- Campo para código -->
-      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" readonly /> <!-- Campo para nome, apenas leitura -->
-      <input id="data" type="date" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" /> <!-- Campo de data -->
+      <input id="codigo" type="text" placeholder="Código do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" /> 
+      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" readonly /> 
+      <input id="data" type="date" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" /> 
     </div>
     <!-- Botões de registrar horário -->
     <div class="grid grid-cols-2 gap-4 mt-6">
-      <button onclick="registrar('entrada')" class="btn-green py-3 rounded-lg text-lg font-semibold hover:bg-green-600">Entrada</button> <!-- Botão de entrada -->
-      <button onclick="registrar('saidaAlmoco')" class="btn-yellow py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600">Saída Almoço</button> <!-- Botão de saída para almoço -->
-      <button onclick="registrar('voltaAlmoco')" class="btn-blue py-3 rounded-lg text-lg font-semibold hover:bg-blue-600">Volta Almoço</button> <!-- Botão de retorno do almoço -->
-      <button onclick="registrar('saida')" class="btn-red py-3 rounded-lg text-lg font-semibold hover:bg-red-600">Saída</button> <!-- Botão de saída -->
+      <button onclick="registrar('entrada')" class="btn-green py-3 rounded-lg text-lg font-semibold hover:bg-green-600">Entrada</button> 
+      <button onclick="registrar('saidaAlmoco')" class="btn-yellow py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600">Saída Intervalo</button> 
+      <button onclick="registrar('voltaAlmoco')" class="btn-blue py-3 rounded-lg text-lg font-semibold hover:bg-blue-600">Volta Intervalo</button> 
+      <button onclick="registrar('saida')" class="btn-red py-3 rounded-lg text-lg font-semibold hover:bg-red-600">Saída</button> 
     </div>
     <!-- Título da tabela de registros -->
     <h2 class="text-2xl font-semibold mt-8 mb-4 text-center text-gray-800">Registros</h2>
