@@ -43,8 +43,8 @@ function registrar(tipo) {
       nome,
       data,
       entrada: '',
-      saidaAlmoco: '',
-      voltaAlmoco: '',
+      saidaIntervalo: '',
+      voltaIntervalo: '',
       saida: ''
     };
     registros.push(registro);
@@ -74,7 +74,7 @@ function exibirRegistros() {
         <td>${r.nome}</td>
         <td>${r.data}</td>
         <td>${r.entrada}</td>
-        <td>${r.saidaAlmoco} / ${r.voltaAlmoco}</td>
+        <td>${r.saidaIntervalo} / ${r.voltaIntervalo}</td>
         <td>${r.saida}</td>
         <td>
           <button onclick="editarRegistro(${index})" class="btn-edit">Editar</button>
