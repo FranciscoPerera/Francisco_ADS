@@ -12,8 +12,8 @@ body {
 
 /* Personaliza a tabela para mantém as bordas separadas e remove espaçamento entre as células */
 table {
-  border-collapse: separate; /* mantém as bordas separadas */
-  border-spacing: 0; /* remove espaçamento entre as células */
+  border-collapse: separate; 
+  border-spacing: 0; 
   width: 100%;
 }
 
