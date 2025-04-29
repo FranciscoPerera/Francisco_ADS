@@ -28,21 +28,21 @@
     <!-- Título da tabela de registros -->
     <h2 class="text-2xl font-semibold mt-8 mb-4 text-center text-gray-800">Registros</h2>
     <!-- Container da tabela com rolagem -->
-    <div class="table-container overflow-x-auto max-h-64 border rounded-xl">
-      <table>
+    <div class="table-container overflow-y-auto max-h-64 border rounded-xl">
+      <table class="w-full text-left border-collapse">
         <thead>
           <tr>
-            <th>Código</th> 
-            <th>Nome</th> 
-            <th>Data</th> 
-            <th>Entrada</th>
-            <th>Almoço (Saída / Volta)</th> 
-            <th>Saída</th> 
-            <th>Editar</th> 
-            <th>Excluir</th> 
+            <th class="border-b p-2">Código</th>
+            <th class="border-b p-2">Nome</th>
+            <th class="border-b p-2">Data</th>
+            <th class="border-b p-2">Entrada</th>
+            <th class="border-b p-2">Almoço (Saída / Volta)</th>
+            <th class="border-b p-2">Saída</th>
+            <th class="border-b p-2">Editar</th>
+            <th class="border-b p-2">Excluir</th>
           </tr>
         </thead>
-        <tbody id="registros"></tbody>
+        <tbody id="registros" class="divide-y"></tbody>
       </table>
     </div>
   </div>
