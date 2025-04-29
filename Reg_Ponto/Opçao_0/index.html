@@ -6,34 +6,37 @@
   <title>Folha de Ponto</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-6">
-  <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow">
-    <h1 class="text-3xl font-bold mb-4">Folha de Ponto</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+<body class="bg-gray-100 p-6 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center mb-6">Folha de Ponto</h1>
+    <div class="space-y-4">
       <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-2 rounded w-full" />
       <input id="data" type="date" class="border p-2 rounded w-full" />
     </div>
-    <div class="flex flex-wrap gap-2 mb-6">
-      <button onclick="registrar('entrada')" class="bg-green-500 text-white px-4 py-2 rounded">Entrada</button>
-      <button onclick="registrar('saidaAlmoco')" class="bg-yellow-500 text-white px-4 py-2 rounded">Saída para Almoço</button>
-      <button onclick="registrar('voltaAlmoco')" class="bg-blue-500 text-white px-4 py-2 rounded">Volta do Almoço</button>
-      <button onclick="registrar('saida')" class="bg-red-500 text-white px-4 py-2 rounded">Saída</button>
+
+    <div class="grid grid-cols-2 gap-3 mt-6">
+      <button onclick="registrar('entrada')" class="bg-green-500 text-white py-3 rounded text-lg font-semibold">Entrada</button>
+      <button onclick="registrar('saidaAlmoco')" class="bg-yellow-500 text-white py-3 rounded text-lg font-semibold">Saída Almoço</button>
+      <button onclick="registrar('voltaAlmoco')" class="bg-blue-500 text-white py-3 rounded text-lg font-semibold">Volta Almoço</button>
+      <button onclick="registrar('saida')" class="bg-red-500 text-white py-3 rounded text-lg font-semibold">Saída</button>
     </div>
 
-    <table class="w-full table-auto border text-sm">
-      <thead>
-        <tr class="bg-gray-200">
-          <th class="border px-2 py-1">Nome</th>
-          <th class="border px-2 py-1">Data</th>
-          <th class="border px-2 py-1">Entrada</th>
-          <th class="border px-2 py-1">Saída Almoço</th>
-          <th class="border px-2 py-1">Volta Almoço</th>
-          <th class="border px-2 py-1">Saída</th>
-          <th class="border px-2 py-1">Editar</th>
-        </tr>
-      </thead>
-      <tbody id="registros"></tbody>
-    </table>
+    <h2 class="text-xl font-semibold mt-8 mb-2 text-center">Registros</h2>
+    <div class="overflow-x-auto max-h-64 overflow-y-auto border rounded">
+      <table class="w-full text-sm text-center">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="border px-2 py-1">Nome</th>
+            <th class="border px-2 py-1">Data</th>
+            <th class="border px-2 py-1">Entrada</th>
+            <th class="border px-2 py-1">Almoço (Saída / Volta)</th>
+            <th class="border px-2 py-1">Saída</th>
+            <th class="border px-2 py-1">Editar</th>
+          </tr>
+        </thead>
+        <tbody id="registros"></tbody>
+      </table>
+    </div>
   </div>
 
   <script>
@@ -60,12 +63,11 @@
       tbody.innerHTML = '';
       registros.forEach((r, index) => {
         tbody.innerHTML += `
-          <tr class="text-center">
+          <tr>
             <td class="border px-2 py-1">${r.nome}</td>
             <td class="border px-2 py-1">${r.data}</td>
             <td class="border px-2 py-1">${r.entrada}</td>
-            <td class="border px-2 py-1">${r.saidaAlmoco}</td>
-            <td class="border px-2 py-1">${r.voltaAlmoco}</td>
+            <td class="border px-2 py-1">${r.saidaAlmoco} / ${r.voltaAlmoco}</td>
             <td class="border px-2 py-1">${r.saida}</td>
             <td class="border px-2 py-1">
               <button onclick="editarRegistro(${index})" class="text-blue-600 underline">Editar</button>
