@@ -1,77 +1,90 @@
+/* Define a fonte padrão usada em todo o corpo da página */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Estiliza o contêiner da tabela com sombra, cantos arredondados e oculta o conteúdo que ultrapassa a borda */
 .table-container {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* sombra leve */
+  border-radius: 10px; /* cantos arredondados */
+  overflow: hidden; /* impede que conteúdo ultrapasse os cantos arredondados */
 }
 
+/* Estiliza a tabela para ocupar toda a largura e remover colapsos de bordas */
 table {
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: separate; /* mantém as bordas separadas */
+  border-spacing: 0; /* remove espaçamento entre as células */
   width: 100%;
 }
 
+/* Estiliza cabeçalhos e células de dados com padding e centralização de texto */
 th, td {
   padding: 12px 16px;
   text-align: center;
 }
 
+/* Estiliza os cabeçalhos da tabela com fundo claro, cor de texto escura e peso maior */
 th {
   background-color: #f5f5f5;
   color: #333;
   font-weight: 600;
 }
 
+/* Estiliza as linhas da tabela com cor de fundo e efeito de transição ao mudar de cor */
 tr {
   background-color: #fff;
   transition: background-color 0.3s ease;
 }
 
+/* Aplica uma cor de fundo diferente ao passar o mouse sobre uma linha */
 tr:hover {
   background-color: #f7fafc;
 }
 
+/* Adiciona transições suaves para mudanças de cor e transformação em botões */
 button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Aumenta levemente o tamanho do botão ao passar o mouse */
 button:hover {
   transform: scale(1.05);
 }
 
+/* Estiliza botões com cores específicas (verde, amarelo, azul, vermelho) e texto branco */
 .btn-green {
-  background-color: #38a169;
+  background-color: #38a169; /* verde */
   color: white;
 }
 
 .btn-yellow {
-  background-color: #fbbf24;
+  background-color: #fbbf24; /* amarelo */
   color: white;
 }
 
 .btn-blue {
-  background-color: #3b82f6;
+  background-color: #3b82f6; /* azul */
   color: white;
 }
 
 .btn-red {
-  background-color: #ef4444;
+  background-color: #ef4444; /* vermelho */
   color: white;
 }
 
+/* Estiliza botões de edição e exclusão como links sublinhados com cor azul */
 .btn-edit,
 .btn-delete {
   color: #3b82f6;
   text-decoration: underline;
 }
 
+/* Altera a cor do botão de edição ao passar o mouse */
 .btn-edit:hover {
-  color: #1d4ed8;
+  color: #1d4ed8; /* azul mais escuro */
 }
 
+/* Altera a cor do botão de exclusão ao passar o mouse */
 .btn-delete:hover {
-  color: #dc2626;
+  color: #dc2626; /* vermelho mais escuro */
 }
