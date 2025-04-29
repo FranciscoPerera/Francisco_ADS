@@ -9,25 +9,21 @@ codigo = {
 
 # Função para verificar o usuário
 def verifica_usuario(cod):
-    resultado = codigo.count(cod)
-    if resultado:
-        return resultado[0]
-    else:
-        return None
+    return codigo.get(cod, None)
 
 print("-----------------Folha Ponto------------------")
 usuario = None
-while not codigo:
+while usuario is None:
     cod = input("Qual seu código: ")
-    codigo = verifica_usuario(cod)
-    if not usuario:
+    usuario = verifica_usuario(cod)
+    if usuario is None:
         print("Usuário inexistente!! Tente novamente.")
+    
 
+print(f"Bem-vindo(a), {usuario}!")
 print("--------------Registre seu ponto--------------")
 print("1) Entrada")
 print("2) Saída intervalo")
 print("3) Retorno intervalo")
 print("4) Saída")
-respostas = input("Registrar: ")
-
-
+resposta = input("Registrar: ")
