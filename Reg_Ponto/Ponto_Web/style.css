@@ -1,16 +1,16 @@
-/* Define a fonte padrão usada em todo o corpo da página */
+/* Fonte padrão */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Estiliza o contêiner da tabela com sombra, cantos arredondados e oculta o conteúdo que ultrapassa a borda */
+/* Muda o contêiner da tabela com cantos arredondados e oculta o conteúdo que ultrapassa a borda */
 .table-container {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* sombra leve */
-  border-radius: 10px; /* cantos arredondados */
-  overflow: hidden; /* impede que conteúdo ultrapasse os cantos arredondados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+  overflow: hidden; 
 }
 
-/* Estiliza a tabela para ocupar toda a largura e remover colapsos de bordas */
+/* Personaliza a tabela para mantém as bordas separadas e remove espaçamento entre as células */
 table {
   border-collapse: separate; /* mantém as bordas separadas */
   border-spacing: 0; /* remove espaçamento entre as células */
