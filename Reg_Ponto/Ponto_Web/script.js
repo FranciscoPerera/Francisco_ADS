@@ -7,7 +7,7 @@ const funcionarios = [
   { codigo: '005', nome: 'Erick Fernandez' }
 ];
 
-// Ao iniciar a pagina, carrega os registros no localStorage ou cria um array vazio
+// Ao iniciar a pagina, carrega os registros no localStorage ou cria uma tabela vazia
 const registros = JSON.parse(localStorage.getItem('pontos')) || [];
 
 // Quando o inserir o código, preenche o nome automaticamente
@@ -16,7 +16,7 @@ document.getElementById('codigo').addEventListener('input', (e) => {
   const funcionario = funcionarios.find(f => f.codigo === codigo);
   const nomeField = document.getElementById('nome');
 
-  // Se encontrar o funcionário, exibe o nome no campo, senão, limpa
+  // Se encontrar o funcionário, aparece o nome no campo, senão, fica vazio
   if (funcionario) {
     nomeField.value = funcionario.nome;
   } else {
@@ -24,7 +24,7 @@ document.getElementById('codigo').addEventListener('input', (e) => {
   }
 });
 
-// Função para registrar um horário (entrada, saída, etc.)
+// Função para registrar os horário (entrada, saída almoço, volta almoço, saída)
 function registrar(tipo) {
   const codigo = document.getElementById('codigo').value;
   const nome = document.getElementById('nome').value;
@@ -36,7 +36,7 @@ function registrar(tipo) {
   // Procura se já existe um registro para o mesmo funcionário na mesma data
   let registro = registros.find(r => r.codigo === codigo && r.data === data);
 
-  // Se não existir, cria um novo objeto de registro e adiciona ao array
+  // Se não existir, cria um novo objeto de registro e adiciona a tabela
   if (!registro) {
     registro = {
       codigo,
@@ -50,7 +50,7 @@ function registrar(tipo) {
     registros.push(registro);
   }
 
-  // Registra o horário atual no campo correspondente (tipo: entrada, saída, etc.)
+  // Registra o horário atual no campo correspondente (tipo: entrada, saída almoço, volta almoço, saída)
   const horaAtual = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   registro[tipo] = horaAtual;
 
@@ -87,12 +87,12 @@ function exibirRegistros() {
   });
 }
 
-// Permite editar manualmente os horários de um registro já existente
+// Permite editar os horários
 function editarRegistro(index) {
   const novoRegistro = { ...registros[index] };
   const campos = ['entrada', 'saidaAlmoco', 'voltaAlmoco', 'saida'];
 
-  // Para cada campo de horário, solicita novo valor ao usuário
+  // Solicita novo valor ao para cada campo de horarios
   campos.forEach(campo => {
     const novoValor = prompt(`Editar ${campo} (HH:MM)`, novoRegistro[campo]);
     if (novoValor !== null) novoRegistro[campo] = novoValor;
@@ -101,7 +101,7 @@ function editarRegistro(index) {
   // Atualiza o registro com os novos valores
   registros[index] = novoRegistro;
   localStorage.setItem('pontos', JSON.stringify(registros));
-  exibirRegistros(); // Atualiza a tabela na tela
+  exibirRegistros();
 }
 
 // Exclui um registro após confirmação do usuário
