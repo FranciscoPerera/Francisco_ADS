@@ -79,12 +79,12 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Altera a cor do botão de edição ao passar o mouse */
+/* Passar o mouse o botao fica azul*/
 .btn-edit:hover {
-  color: #1d4ed8; /* azul mais escuro */
+  color: #1d4ed8; 
 }
 
-/* Altera a cor do botão de exclusão ao passar o mouse */
+/* Passar o mouse o botao fica vermelho*/
 .btn-delete:hover {
-  color: #dc2626; /* vermelho mais escuro */
+  color: #dc2626; 
 }
