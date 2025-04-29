@@ -5,34 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Folha de Ponto</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .table-container {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: center;
+    }
+    th {
+      background-color: #f5f5f5;
+      color: #333;
+      font-weight: 600;
+    }
+    tr {
+      background-color: #fff;
+      transition: background-color 0.3s ease;
+    }
+    tr:hover {
+      background-color: #f7fafc;
+    }
+    button {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .btn-green {
+      background-color: #38a169;
+      color: white;
+    }
+    .btn-yellow {
+      background-color: #fbbf24;
+      color: white;
+    }
+    .btn-blue {
+      background-color: #3b82f6;
+      color: white;
+    }
+    .btn-red {
+      background-color: #ef4444;
+      color: white;
+    }
+    .btn-edit, .btn-delete {
+      color: #3b82f6;
+      text-decoration: underline;
+    }
+    .btn-edit:hover {
+      color: #1d4ed8;
+    }
+    .btn-delete:hover {
+      color: #dc2626;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 p-6 flex items-center justify-center min-h-screen">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-4xl">
-    <h1 class="text-2xl font-bold text-center mb-6">Folha de Ponto</h1>
+<body class="bg-gray-50 p-6 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-4xl">
+    <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Folha de Ponto</h1>
     <div class="space-y-4">
-      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-2 rounded w-full" />
-      <input id="data" type="date" class="border p-2 rounded w-full" />
+      <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <input id="data" type="date" class="border p-3 rounded-lg w-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
     </div>
 
-    <div class="grid grid-cols-2 gap-3 mt-6">
-      <button onclick="registrar('entrada')" class="bg-green-500 text-white py-3 rounded text-lg font-semibold">Entrada</button>
-      <button onclick="registrar('saidaAlmoco')" class="bg-yellow-500 text-white py-3 rounded text-lg font-semibold">Saída Almoço</button>
-      <button onclick="registrar('voltaAlmoco')" class="bg-blue-500 text-white py-3 rounded text-lg font-semibold">Volta Almoço</button>
-      <button onclick="registrar('saida')" class="bg-red-500 text-white py-3 rounded text-lg font-semibold">Saída</button>
+    <div class="grid grid-cols-2 gap-4 mt-6">
+      <button onclick="registrar('entrada')" class="btn-green py-3 rounded-lg text-lg font-semibold hover:bg-green-600">Entrada</button>
+      <button onclick="registrar('saidaAlmoco')" class="btn-yellow py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600">Saída Almoço</button>
+      <button onclick="registrar('voltaAlmoco')" class="btn-blue py-3 rounded-lg text-lg font-semibold hover:bg-blue-600">Volta Almoço</button>
+      <button onclick="registrar('saida')" class="btn-red py-3 rounded-lg text-lg font-semibold hover:bg-red-600">Saída</button>
     </div>
 
-    <h2 class="text-xl font-semibold mt-8 mb-2 text-center">Registros</h2>
-    <div class="overflow-x-auto max-h-64 overflow-y-auto border rounded">
-      <table class="w-full text-sm text-center table-auto">
-        <thead class="bg-gray-200">
+    <h2 class="text-2xl font-semibold mt-8 mb-4 text-center text-gray-800">Registros</h2>
+    <div class="table-container overflow-x-auto max-h-64 border rounded-xl">
+      <table>
+        <thead>
           <tr>
-            <th class="border px-4 py-2">Nome</th>
-            <th class="border px-4 py-2">Data</th>
-            <th class="border px-4 py-2">Entrada</th>
-            <th class="border px-4 py-2">Almoço (Saída / Volta)</th>
-            <th class="border px-4 py-2">Saída</th>
-            <th class="border px-4 py-2">Editar</th>
-            <th class="border px-4 py-2">Excluir</th>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Entrada</th>
+            <th>Almoço (Saída / Volta)</th>
+            <th>Saída</th>
+            <th>Editar</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody id="registros"></tbody>
@@ -65,16 +128,16 @@
       registros.forEach((r, index) => {
         tbody.innerHTML += `
           <tr>
-            <td class="border px-4 py-2">${r.nome}</td>
-            <td class="border px-4 py-2">${r.data}</td>
-            <td class="border px-4 py-2">${r.entrada}</td>
-            <td class="border px-4 py-2">${r.saidaAlmoco} / ${r.voltaAlmoco}</td>
-            <td class="border px-4 py-2">${r.saida}</td>
-            <td class="border px-4 py-2">
-              <button onclick="editarRegistro(${index})" class="text-blue-600 underline">Editar</button>
+            <td>${r.nome}</td>
+            <td>${r.data}</td>
+            <td>${r.entrada}</td>
+            <td>${r.saidaAlmoco} / ${r.voltaAlmoco}</td>
+            <td>${r.saida}</td>
+            <td>
+              <button onclick="editarRegistro(${index})" class="btn-edit">Editar</button>
             </td>
-            <td class="border px-4 py-2">
-              <button onclick="excluirRegistro(${index})" class="text-red-600 underline">Excluir</button>
+            <td>
+              <button onclick="excluirRegistro(${index})" class="btn-delete">Excluir</button>
             </td>
           </tr>
         `;
