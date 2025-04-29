@@ -36,22 +36,17 @@ tr {
   transition: background-color 0.3s ease;
 }
 
-/* Aplica uma cor de fundo diferente ao passar o mouse sobre uma linha */
-tr:hover {
-  background-color: #f7fafc;
-}
-
 /* Adiciona transições suaves para mudanças de cor e transformação em botões */
 button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Aumenta levemente o tamanho do botão ao passar o mouse */
+/* Aumenta o tamanho do botão ao passar o mouse */
 button:hover {
   transform: scale(1.05);
 }
 
-/* Estiliza botões com cores específicas (verde, amarelo, azul, vermelho) e texto branco */
+/* Personaliza os botões com cores específicas */
 .btn-green {
   background-color: #38a169; /* verde */
   color: white;
@@ -72,7 +67,7 @@ button:hover {
   color: white;
 }
 
-/* Estiliza botões de edição e exclusão como links sublinhados com cor azul */
+/* Personaliza os botões de edição e exclusão como links sublinhados com cor azul */
 .btn-edit,
 .btn-delete {
   color: #3b82f6;
