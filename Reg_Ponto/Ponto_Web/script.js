@@ -1,4 +1,4 @@
-// Lista fixa de funcionários com código e nome
+// Lista de funcionários
 const funcionarios = [
   { codigo: '001', nome: 'Francisco Pereira' },
   { codigo: '002', nome: 'Alexandre Aguado' },
@@ -7,7 +7,7 @@ const funcionarios = [
   { codigo: '005', nome: 'Erick Fernandez' }
 ];
 
-// Carrega os registros de ponto salvos no localStorage ou cria um array vazio
+// Carrega os registros no localStorage ou cria um array vazio
 const registros = JSON.parse(localStorage.getItem('pontos')) || [];
 
 // Quando o usuário digita um código, preenche o campo "nome" automaticamente
