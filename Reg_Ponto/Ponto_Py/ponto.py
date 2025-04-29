@@ -1,5 +1,3 @@
-from datetime import datetime
-
 # Cria a tabela de funcionários
 codigo = {
     "01": "Francisco",
@@ -9,12 +7,26 @@ codigo = {
     "05": "Ana"
 }
 
-# Tabela para armazenar os registros de ponto
-registros = {cod: [] for cod in codigo.keys()}
+# Cria a tabela de Registros de ponto
+registros = {
+    "01": [],
+    "02": [],
+    "03": [],
+    "04": [],
+    "05": []
+}
 
 # Função para verificar o usuário
 def verifica_usuario(cod):
     return codigo.get(cod, None)
+
+# Função para adicionar o ponto
+def adicionar_ponto(cod, tipo):
+    if cod in registros:
+        registros[cod].append(tipo)
+        print(f"Registro de ponto '{tipo}' adicionado para o usuário {codigo[cod]}")
+    else:
+        print("Código inválido!")
 
 print("-----------------Folha Ponto------------------")
 usuario = None
@@ -31,16 +43,3 @@ print("2) Saída intervalo")
 print("3) Retorno intervalo")
 print("4) Saída")
 resposta = input("Registrar: ")
-
-# Adiciona o registro na tabela com horários automáticos
-hora_atual = datetime.now().strftime("%H:%M")
-if resposta == "1":
-    registros[cod].append({"entrada": hora_atual, "saida_intervalo": "", "retorno_intervalo": "", "saida": ""})
-elif resposta == "2":
-    registros[cod].append({"entrada": "", "saida_intervalo": hora_atual, "retorno_intervalo": "", "saida": ""})
-elif resposta == "3":
-    registros[cod].append({"entrada": "", "saida_intervalo": "", "retorno_intervalo": hora_atual, "saida": ""})
-elif resposta == "4":
-    registros[cod].append({"entrada": "", "saida_intervalo": "", "retorno_intervalo": "", "saida": hora_atual})
-
-("Registros atualizados:", registros)
