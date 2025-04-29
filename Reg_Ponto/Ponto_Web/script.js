@@ -90,7 +90,7 @@ function exibirRegistros() {
 // Permite editar os horários
 function editarRegistro(index) {
   const novoRegistro = { ...registros[index] };
-  const campos = ['entrada', 'saidaAlmoco', 'voltaAlmoco', 'saida'];
+  const campos = ['entrada', 'saidaIntervalo', 'voltaIntervalo', 'saida'];
 
   // Solicita novo valor ao para cada campo de horarios
   campos.forEach(campo => {
