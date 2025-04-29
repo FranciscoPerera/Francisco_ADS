@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6 flex items-center justify-center min-h-screen">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-4xl">
     <h1 class="text-2xl font-bold text-center mb-6">Folha de Ponto</h1>
     <div class="space-y-4">
       <input id="nome" type="text" placeholder="Nome do Funcionário" class="border p-2 rounded w-full" />
@@ -23,15 +23,16 @@
 
     <h2 class="text-xl font-semibold mt-8 mb-2 text-center">Registros</h2>
     <div class="overflow-x-auto max-h-64 overflow-y-auto border rounded">
-      <table class="w-full text-sm text-center">
+      <table class="w-full text-sm text-center table-auto">
         <thead class="bg-gray-200">
           <tr>
-            <th class="border px-2 py-1">Nome</th>
-            <th class="border px-2 py-1">Data</th>
-            <th class="border px-2 py-1">Entrada</th>
-            <th class="border px-2 py-1">Almoço (Saída / Volta)</th>
-            <th class="border px-2 py-1">Saída</th>
-            <th class="border px-2 py-1">Editar</th>
+            <th class="border px-4 py-2">Nome</th>
+            <th class="border px-4 py-2">Data</th>
+            <th class="border px-4 py-2">Entrada</th>
+            <th class="border px-4 py-2">Almoço (Saída / Volta)</th>
+            <th class="border px-4 py-2">Saída</th>
+            <th class="border px-4 py-2">Editar</th>
+            <th class="border px-4 py-2">Excluir</th>
           </tr>
         </thead>
         <tbody id="registros"></tbody>
@@ -64,13 +65,16 @@
       registros.forEach((r, index) => {
         tbody.innerHTML += `
           <tr>
-            <td class="border px-2 py-1">${r.nome}</td>
-            <td class="border px-2 py-1">${r.data}</td>
-            <td class="border px-2 py-1">${r.entrada}</td>
-            <td class="border px-2 py-1">${r.saidaAlmoco} / ${r.voltaAlmoco}</td>
-            <td class="border px-2 py-1">${r.saida}</td>
-            <td class="border px-2 py-1">
+            <td class="border px-4 py-2">${r.nome}</td>
+            <td class="border px-4 py-2">${r.data}</td>
+            <td class="border px-4 py-2">${r.entrada}</td>
+            <td class="border px-4 py-2">${r.saidaAlmoco} / ${r.voltaAlmoco}</td>
+            <td class="border px-4 py-2">${r.saida}</td>
+            <td class="border px-4 py-2">
               <button onclick="editarRegistro(${index})" class="text-blue-600 underline">Editar</button>
+            </td>
+            <td class="border px-4 py-2">
+              <button onclick="excluirRegistro(${index})" class="text-red-600 underline">Excluir</button>
             </td>
           </tr>
         `;
@@ -87,6 +91,14 @@
       registros[index] = novoRegistro;
       localStorage.setItem('pontos', JSON.stringify(registros));
       exibirRegistros();
+    }
+
+    function excluirRegistro(index) {
+      if (confirm("Tem certeza que deseja excluir este registro?")) {
+        registros.splice(index, 1);
+        localStorage.setItem('pontos', JSON.stringify(registros));
+        exibirRegistros();
+      }
     }
 
     window.onload = exibirRegistros;
