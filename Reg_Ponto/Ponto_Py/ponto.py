@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Cria a tabela de funcionários
 codigo = {
     "01": "Francisco",
@@ -6,6 +8,9 @@ codigo = {
     "04": "Gabriel",
     "05": "Ana"
 }
+
+# Tabela para armazenar os registros de ponto
+registros = {cod: [] for cod in codigo.keys()}
 
 # Função para verificar o usuário
 def verifica_usuario(cod):
@@ -27,3 +32,15 @@ print("3) Retorno intervalo")
 print("4) Saída")
 resposta = input("Registrar: ")
 
+# Adiciona o registro na tabela com horários automáticos
+hora_atual = datetime.now().strftime("%H:%M")
+if resposta == "1":
+    registros[cod].append({"entrada": hora_atual, "saida_intervalo": "", "retorno_intervalo": "", "saida": ""})
+elif resposta == "2":
+    registros[cod].append({"entrada": "", "saida_intervalo": hora_atual, "retorno_intervalo": "", "saida": ""})
+elif resposta == "3":
+    registros[cod].append({"entrada": "", "saida_intervalo": "", "retorno_intervalo": hora_atual, "saida": ""})
+elif resposta == "4":
+    registros[cod].append({"entrada": "", "saida_intervalo": "", "retorno_intervalo": "", "saida": hora_atual})
+
+("Registros atualizados:", registros)
