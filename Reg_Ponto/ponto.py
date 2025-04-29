@@ -2,7 +2,7 @@
 import sqlite3
 
 # Conecta ao banco de dados
-conn = sqlite3.connect("ponto.db")
+conn = sqlite3.connect("Reg_Ponto/ponto.db")
 cursor = conn.cursor()
 
 # Cria a tabela de funcionários
