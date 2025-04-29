@@ -27,7 +27,9 @@ CREATE TABLE IF NOT EXISTS registros (
 codigo = {
     "01": "Francisco",
     "02": "Aguado", 
-    "03": "Luiz"
+    "03": "Luiza",
+    "04": "Gabriel",
+    "05": "Ana"
 }
 
 # Inseri os funcionarios da empresa no banco funcionarios
