@@ -1,51 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calculadora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Folha Ponto - Calculadora</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-300 flex items-center justify-center min-h-screen">
-
-  <div class="bg-gray-800 p-4 rounded-lg shadow-lg w-64">
-    <!-- Display -->
-    <input
-      id="resultado"
-      type="text"
-      class="w-full text-right text-2xl p-3 bg-gray-100 border border-gray-400 rounded mb-4"
-      placeholder="0"
-      disabled
-    />
-
-    <!-- Teclado da calculadora -->
-    <div class="grid grid-cols-4 gap-2">
+<body class="bg-gray-200 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-80">
+    <div class="mb-4 text-center">
+      <h1 class="text-2xl font-bold">Folha Ponto</h1>
+    </div>
+    <div id="display" class="bg-gray-100 p-4 mb-4 rounded text-right font-mono text-lg h-16 overflow-y-auto"></div>
+    <div class="grid grid-cols-4 gap-3">
       <!-- Primeira linha -->
-      <button onclick="calcular('acao', 'c')" class="col-span-2 bg-red-500 text-white p-4 rounded-lg text-lg">C</button>
-      <button onclick="calcular('acao', '/')" class="bg-gray-700 text-white p-4 rounded-lg text-lg">/</button>
-      <button onclick="calcular('acao', '*')" class="bg-gray-700 text-white p-4 rounded-lg text-lg">×</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">7</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">8</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">9</button>
+      <button class="bg-green-500 text-white py-2 rounded">Entrada</button>
 
       <!-- Segunda linha -->
-      <button onclick="calcular('valor', 7)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">7</button>
-      <button onclick="calcular('valor', 8)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">8</button>
-      <button onclick="calcular('valor', 9)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">9</button>
-      <button onclick="calcular('acao', '-')" class="bg-gray-700 text-white p-4 rounded-lg text-lg">-</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">4</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">5</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">6</button>
+      <button class="bg-yellow-500 text-white py-2 rounded">Saída Intervalo</button>
 
       <!-- Terceira linha -->
-      <button onclick="calcular('valor', 4)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">4</button>
-      <button onclick="calcular('valor', 5)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">5</button>
-      <button onclick="calcular('valor', 6)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">6</button>
-      <button onclick="calcular('acao', '+')" class="bg-gray-700 text-white p-4 rounded-lg text-lg">+</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">1</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">2</button>
+      <button class="bg-gray-300 py-2 rounded font-bold">3</button>
+      <button class="bg-blue-500 text-white py-2 rounded">Retorno Intervalo</button>
 
       <!-- Quarta linha -->
-      <button onclick="calcular('valor', 1)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">1</button>
-      <button onclick="calcular('valor', 2)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">2</button>
-      <button onclick="calcular('valor', 3)" class="bg-gray-700 text-white p-4 rounded-lg text-lg">3</button>
-      <button onclick="calcular('acao', '=')" class="row-span-2 bg-green-500 text-white p-4 rounded-lg text-lg flex items-center justify-center">=</button>
-
-      <!-- Última linha -->
-      <button onclick="calcular('valor', 0)" class="col-span-2 bg-gray-700 text-white p-4 rounded-lg text-lg">0</button>
-      <button onclick="calcular('acao', '.')" class="bg-gray-700 text-white p-4 rounded-lg text-lg">.</button>
+      <button class="bg-gray-300 py-2 rounded font-bold col-span-2">0</button>
+      <button class="bg-red-500 text-white py-2 rounded col-span-2">Saída</button>
     </div>
   </div>
 </body>
