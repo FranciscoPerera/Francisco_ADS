@@ -5,37 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Folha Ponto - Calculadora</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-gray-200 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-6 rounded-2xl shadow-xl w-80">
-    <div class="mb-4 text-center">
-      <h1 class="text-2xl font-bold">Folha Ponto</h1>
+<body class="bg-gradient-to-br from-blue-50 to-gray-200 min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm">
+    <div class="mb-5 text-center">
+      <h1 class="text-3xl font-bold text-gray-800">Folha Ponto</h1>
+      <p class="text-sm text-gray-500">Registre seus horários com facilidade</p>
     </div>
-    <div id="display" class="bg-gray-100 p-4 mb-4 rounded text-right font-mono text-lg h-16 overflow-y-auto"></div>
+
+    <div id="display" class="bg-gray-100 p-4 mb-5 rounded-lg text-right font-mono text-xl h-20 overflow-y-auto shadow-inner">
+      <!-- Exibição de dados -->
+    </div>
+
     <div class="grid grid-cols-4 gap-3">
-      <!-- Primeira linha -->
-      <button class="bg-gray-300 py-2 rounded font-bold">9</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">C</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">⌫</button>
-      <button class="bg-green-500 text-white py-2 rounded">Entrada</button>
+      <!-- Linha 1 -->
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">9</button>
+      <button class="bg-yellow-300 hover:bg-yellow-400 py-3 rounded-lg font-bold text-lg">C</button>
+      <button class="bg-red-300 hover:bg-red-400 py-3 rounded-lg font-bold text-lg">⌫</button>
+      <button class="bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold text-sm">Entrada</button>
 
-      <!-- Segunda linha -->
-      <button class="bg-gray-300 py-2 rounded font-bold">8</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">7</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">6</button>
-      <button class="bg-yellow-500 text-white py-2 rounded">Saída Intervalo</button>
+      <!-- Linha 2 -->
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">8</button>
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">7</button>
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">6</button>
+      <button class="bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold text-sm text-center leading-tight">Saída<br>Intervalo</button>
 
-      <!-- Terceira linha -->
-      <button class="bg-gray-300 py-2 rounded font-bold">5</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">4</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">3</button>
-      <button class="bg-blue-500 text-white py-2 rounded">Retorno Intervalo</button>
+      <!-- Linha 3 -->
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">5</button>
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">4</button>
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">3</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold text-sm text-center leading-tight">Retorno<br>Intervalo</button>
 
-      <!-- Quarta linha -->
-      <button class="bg-gray-300 py-2 rounded font-bold">2</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">1</button>
-      <button class="bg-gray-300 py-2 rounded font-bold">0</button>
-      <button class="bg-red-500 text-white py-2 rounded">Saída</button>
+      <!-- Linha 4 -->
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">2</button>
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">1</button>
+      <button class="bg-gray-200 hover:bg-gray-300 py-3 rounded-lg font-bold text-lg">0</button>
+      <button class="bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-semibold text-sm">Saída</button>
     </div>
   </div>
 </body>
