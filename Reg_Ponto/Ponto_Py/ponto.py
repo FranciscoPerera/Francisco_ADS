@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Tabela de funcionários
 codigo = {
     "01": "Francisco",
@@ -15,7 +17,11 @@ registros_ponto = {
     "04": [],
     "05": []
 }
+
 # Função que adicionar o ponto
+def adiciona_ponto(cod, tipo):
+    # Adiciona o ponto na lista de registros do funcionário
+    registros_ponto[cod].append((tipo, datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
 
 # Função que verificar o usuário
 def verifica_usuario(cod):
@@ -35,4 +41,25 @@ print("1) Entrada")
 print("2) Saída intervalo")
 print("3) Retorno intervalo")
 print("4) Saída")
-resposta = input("Registrar: ")
+
+# Loop para registrar o ponto
+while True:
+    resposta = input("Registrar (1-4) ou 'sair' para encerrar: ").strip()
+    
+    if resposta.lower() == 'sair':
+        print("Encerrando o registro de ponto !")
+        break
+
+    if resposta in ["1", "2", "3", "4"]:
+        tipos = {
+            "1": "Entrada",
+            "2": "Saída intervalo",
+            "3": "Retorno intervalo",
+            "4": "Saída"
+        }
+        tipo = tipos[resposta]
+        adiciona_ponto(cod, tipo)
+        print(f"Ponto registrado: {tipo} às {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+    else:
+        print("Opção inválida! Tente novamente.")
+
