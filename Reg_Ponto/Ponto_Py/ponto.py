@@ -1,4 +1,8 @@
 from datetime import datetime
+import pytz  # Biblioteca para lidar com fusos horários
+
+# Configuração do fuso horário
+fuso_horario = pytz.timezone("America/Sao_Paulo")  # Ajuste para o fuso horário correto
 
 # Tabela de funcionários
 codigo = {
@@ -20,7 +24,8 @@ registros_ponto = {
 
 # Função que adicionar o ponto na lista de registros do funcionário
 def adiciona_ponto(cod, tipo):
-    registros_ponto[cod].append((tipo, datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
+    agora = datetime.now(fuso_horario)  # Obtém a data e hora no fuso horário configurado
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))
 
 # Função que verificar o usuário
 def verifica_usuario(cod):
@@ -57,7 +62,7 @@ while True:
         }
         tipo = tipos[resposta]
         adiciona_ponto(cod, tipo)
-        print(f"Ponto registrado: {tipo} às {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+        agora = datetime.now(fuso_horario)
+        print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}")
     else:
         print("Opção inválida! Tente novamente.")
-
