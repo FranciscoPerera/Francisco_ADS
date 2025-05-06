@@ -41,7 +41,6 @@ print("2) Saída intervalo")
 print("3) Retorno intervalo")
 print("4) Saída")
 
-# Loop para registrar o ponto
 while True:
     resposta = input("Registrar (1-4) ou 'sair' para encerrar: ").strip()
     
