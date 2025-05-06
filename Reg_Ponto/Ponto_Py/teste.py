@@ -1,8 +1,10 @@
-from datetime import datetime # Biblioteca para lidar com datas e horas
-import pytz  # Biblioteca para lidar com fusos horários 
+import tkinter as tk
+from tkinter import messagebox
+from datetime import datetime
+import pytz
 
-# Configura para o fuso horário do Brasil (São Paulo)
-fuso_horario = pytz.timezone("America/Sao_Paulo")  
+# Fuso horário do Brasil
+fuso_horario = pytz.timezone("America/Sao_Paulo")
 
 # Tabela de funcionários
 codigo = {
@@ -13,56 +15,63 @@ codigo = {
     "05": "Ana"
 }
 
-# Tabela de Registros dos ponto (Entrada, Saida intervalo, Retorno Intervalo e Saida)
-registros_ponto = {
-    "01": [],
-    "02": [],
-    "03": [],
-    "04": [],
-    "05": []
-}
+# Tabela de Registros de ponto
+registros_ponto = {cod: [] for cod in codigo}
 
-# Função que adicionar o ponto na lista de registros do funcionário
+# Função para adicionar ponto
 def adiciona_ponto(cod, tipo):
-    agora = datetime.now(fuso_horario) # informa a data e hora configurada
-    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
+    agora = datetime.now(fuso_horario)
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))
+    return agora.strftime("%d/%m/%Y %H:%M:%S")
 
-# Função que verificar o usuário
-def verifica_usuario(cod):
-    return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
+# Função de login
+def fazer_login():
+    cod = entry_codigo.get()
+    usuario = codigo.get(cod)
 
-print("-----------------Folha Ponto------------------")
-usuario = None
-while usuario is None: 
-    cod = input("Qual seu código: ")
-    usuario = verifica_usuario(cod)
-    if usuario is None: 
-        print("Usuário inexistente!! Tente novamente.")
-
-print(f"Bem-vindo(a), {usuario}!")
-print("--------------Registre seu ponto--------------")
-print("1) Entrada")
-print("2) Saída intervalo")
-print("3) Retorno intervalo")
-print("4) Saída")
-
-while True:
-    resposta = input("Registrar (1-4) ou 'sair' para encerrar: ").strip() # strip() remove espaços em branco 
-    
-    if resposta.lower() == 'sair': # lower() converte a string para minúscula ou maiúscula
-        print("Encerrando o registro de ponto !")
-        break
-
-    if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
-        tipos = {
-            "1": "Entrada",
-            "2": "Saída intervalo",
-            "3": "Retorno intervalo",
-            "4": "Saída"
-        }
-        tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
-        adiciona_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
-        agora = datetime.now(fuso_horario) # informa a data e hora configurada
-        print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
+    if usuario:
+        label_boas_vindas.config(text=f"Bem-vindo(a), {usuario}!")
+        botoes_frame.pack(pady=10)
+        entry_codigo.config(state='disabled')
+        btn_login.config(state='disabled')
     else:
-        print("Opção inválida! Tente novamente.")
+        messagebox.showerror("Erro", "Código inválido!")
+
+# Função para registrar ponto
+def registrar_ponto(tipo):
+    cod = entry_codigo.get()
+    hora = adiciona_ponto(cod, tipo)
+    messagebox.showinfo("Registrado", f"{tipo} registrado às {hora}")
+
+# Criar interface
+janela = tk.Tk()
+janela.title("Sistema de Ponto")
+janela.geometry("300x400")
+
+# Campo de entrada do código
+tk.Label(janela, text="Digite seu código:").pack(pady=5)
+entry_codigo = tk.Entry(janela)
+entry_codigo.pack()
+
+# Botão de login
+btn_login = tk.Button(janela, text="Login", command=fazer_login)
+btn_login.pack(pady=5)
+
+# Mensagem de boas-vindas
+label_boas_vindas = tk.Label(janela, text="", font=("Arial", 10, "bold"))
+label_boas_vindas.pack(pady=10)
+
+# Frame para os botões de ponto
+botoes_frame = tk.Frame(janela)
+
+btn_entrada = tk.Button(botoes_frame, text="Entrada", width=20, command=lambda: registrar_ponto("Entrada"))
+btn_saida_i = tk.Button(botoes_frame, text="Saída Intervalo", width=20, command=lambda: registrar_ponto("Saída intervalo"))
+btn_retorno = tk.Button(botoes_frame, text="Retorno Intervalo", width=20, command=lambda: registrar_ponto("Retorno intervalo"))
+btn_saida = tk.Button(botoes_frame, text="Saída", width=20, command=lambda: registrar_ponto("Saída"))
+
+btn_entrada.pack(pady=2)
+btn_saida_i.pack(pady=2)
+btn_retorno.pack(pady=2)
+btn_saida.pack(pady=2)
+
+janela.mainloop()
