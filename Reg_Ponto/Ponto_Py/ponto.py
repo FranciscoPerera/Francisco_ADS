@@ -1,8 +1,8 @@
-from datetime import datetime
-import pytz  # Biblioteca para lidar com fusos horários
+from datetime import datetime # Biblioteca para lidar com datas e horas
+import pytz  # Biblioteca para lidar com fusos horários 
 
-# Configuração do fuso horário
-fuso_horario = pytz.timezone("America/Sao_Paulo")  # Ajuste para o fuso horário correto
+# Configura para o fuso horário do Brasil (São Paulo)
+fuso_horario = pytz.timezone("America/Sao_Paulo")  
 
 # Tabela de funcionários
 codigo = {
