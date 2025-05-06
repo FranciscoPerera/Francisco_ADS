@@ -53,16 +53,16 @@ while True:
         print("Encerrando o registro de ponto !")
         break
 
-    if resposta in ["1", "2", "3", "4"]:
+    if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
         tipos = {
             "1": "Entrada",
             "2": "Saída intervalo",
             "3": "Retorno intervalo",
             "4": "Saída"
         }
-        tipo = tipos[resposta]
-        adiciona_ponto(cod, tipo)
-        agora = datetime.now(fuso_horario)
-        print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}")
+        tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
+        adiciona_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
+        agora = datetime.now(fuso_horario) ## informa a data e hora configurada
+        print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
     else:
         print("Opção inválida! Tente novamente.")
