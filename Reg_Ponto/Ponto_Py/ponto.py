@@ -24,12 +24,12 @@ registros_ponto = {
 
 # Função que adicionar o ponto na lista de registros do funcionário
 def adiciona_ponto(cod, tipo):
-    agora = datetime.now(fuso_horario)  # informa a data e hora configurada
-    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))  # formata a data e hora
+    agora = datetime.now(fuso_horario) # informa a data e hora configurada
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
 
 # Função que verificar o usuário
 def verifica_usuario(cod):
-    return codigo.get(cod, None)  # verifica se o cod existe na tabela funcionários
+    return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
 
 print("-----------------Folha Ponto------------------")
 usuario = None
@@ -62,7 +62,7 @@ while True:
         }
         tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
         adiciona_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
-        agora = datetime.now(fuso_horario) ## informa a data e hora configurada
+        agora = datetime.now(fuso_horario) # informa a data e hora configurada
         print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
     else:
         print("Opção inválida! Tente novamente.")
