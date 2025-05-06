@@ -24,19 +24,19 @@ registros_ponto = {
 
 # Função que adicionar o ponto na lista de registros do funcionário
 def adiciona_ponto(cod, tipo):
-    agora = datetime.now(fuso_horario)  # Obtém a data e hora no fuso horário configurado
-    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))
+    agora = datetime.now(fuso_horario)  # informa a data e hora configurada
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))  # formata a data e hora
 
 # Função que verificar o usuário
 def verifica_usuario(cod):
-    return codigo.get(cod, None)
+    return codigo.get(cod, None)  # verifica se o cod existe na tabela funcionários
 
 print("-----------------Folha Ponto------------------")
 usuario = None
-while usuario is None:
+while usuario is None: 
     cod = input("Qual seu código: ")
     usuario = verifica_usuario(cod)
-    if usuario is None:
+    if usuario is None: 
         print("Usuário inexistente!! Tente novamente.")
 
 print(f"Bem-vindo(a), {usuario}!")
@@ -47,9 +47,9 @@ print("3) Retorno intervalo")
 print("4) Saída")
 
 while True:
-    resposta = input("Registrar (1-4) ou 'sair' para encerrar: ").strip()
+    resposta = input("Registrar (1-4) ou 'sair' para encerrar: ").strip() # strip() remove espaços em branco 
     
-    if resposta.lower() == 'sair':
+    if resposta.lower() == 'sair': # lower() converte a string para minúscula ou maiúscula
         print("Encerrando o registro de ponto !")
         break
 
