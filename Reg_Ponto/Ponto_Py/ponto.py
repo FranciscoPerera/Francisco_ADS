@@ -18,9 +18,8 @@ registros_ponto = {
     "05": []
 }
 
-# Função que adicionar o ponto
+# Função que adicionar o ponto na lista de registros do funcionário
 def adiciona_ponto(cod, tipo):
-    # Adiciona o ponto na lista de registros do funcionário
     registros_ponto[cod].append((tipo, datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
 
 # Função que verificar o usuário
