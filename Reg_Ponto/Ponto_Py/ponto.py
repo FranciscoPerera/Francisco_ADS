@@ -8,7 +8,13 @@ codigo = {
 }
 
 # Tabela de Registros dos ponto (Entrada, Saida intervalo, Retorno Intervalo e Saida)
-
+registros_ponto = {
+    "01": [],
+    "02": [],
+    "03": [],
+    "04": [],
+    "05": []
+}
 # Função que adicionar o ponto
 
 # Função que verificar o usuário
