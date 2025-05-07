@@ -71,7 +71,7 @@ def main(page: ft.Page):
                 saida += f"{tipo}: {horario}\n"
         else:
             saida += "Nenhum ponto registrado ainda!"
-        saida += "------------------------------------"
+        saida += "----------------------------------------------"
         registro_output.value = saida
         page.update()
 
