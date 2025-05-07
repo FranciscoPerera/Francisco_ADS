@@ -1,24 +1,18 @@
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "Lista de Tarefas"
-    page.theme_mode = "light"
+    page.title = "Flet"
 
-    tarefas = ft.Column()
-
-    def adicionar_tarefa(e):
-        if campo_tarefa.value:
-            nova_tarefa = ft.Checkbox(label=campo_tarefa.value)
-            tarefas.controls.append(nova_tarefa)
-            campo_tarefa.value = ""
-            page.update()
-
-    campo_tarefa = ft.TextField(label="Nova tarefa", expand=True, on_submit=adicionar_tarefa)
-    botao_adicionar = ft.ElevatedButton("Adicionar", on_click=adicionar_tarefa)
+    texto = ft.Text("Olá, mundo!")
+    
+    botao = ft.ElevatedButton(
+        text="Clique aqui",
+        on_click=lambda e: texto.update("Você clicou!")
+    )
 
     page.add(
-        ft.Row([campo_tarefa, botao_adicionar]),
-        tarefas
+        texto,
+        botao
     )
 
 ft.app(target=main)
