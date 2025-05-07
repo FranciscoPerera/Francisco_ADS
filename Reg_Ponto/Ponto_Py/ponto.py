@@ -22,22 +22,22 @@ registros_ponto = {
     "05": []
 }
 
-# Função que adicionar o ponto na lista de registros do funcionário
+# Função para adicionar o ponto na lista de registros do funcionário
 def adiciona_ponto(cod, tipo):
     agora = datetime.now(fuso_horario) # informa a data e hora configurada
     registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
 
-# Função para exibir os registros do funcionário
+# Função para ver os registros do funcionário
 def exibe_registros(cod):
     print("\n---------- Seus Registros de Ponto ----------")
-    if registros_ponto[cod]:
-        for tipo, horario in registros_ponto[cod]:
-            print(f"{tipo}: {horario}")
+    if registros_ponto[cod]: # Verifica se tem registros do funcionário
+        for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário)
+            print(f"{tipo}: {horario}") 
     else:
         print("Nenhum ponto registrado ainda !")
     print("---------------------------------------------\n")
 
-# Função que verificar o usuário
+# Função para verifica o usuário
 def verifica_usuario(cod):
     return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
 
