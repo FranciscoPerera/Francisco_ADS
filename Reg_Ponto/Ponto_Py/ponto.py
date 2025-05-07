@@ -31,7 +31,7 @@ def adiciona_ponto(cod, tipo):
 def exibe_registros(cod):
     print("\n---------- Seus Registros de Ponto ----------")
     if registros_ponto[cod]: # Verifica se tem registros do funcionário
-        for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário)
+        for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
             print(f"{tipo}: {horario}") 
     else:
         print("Nenhum ponto registrado ainda !")
