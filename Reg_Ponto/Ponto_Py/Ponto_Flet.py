@@ -1,11 +1,10 @@
-import flet as ft
-from datetime import datetime
-import pytz
+from datetime import datetime # Biblioteca para lidar com datas e horas
+import pytz  # Biblioteca para lidar com fusos horários 
 
-# Fuso horário de São Paulo
-fuso_horario = pytz.timezone("America/Sao_Paulo")
+# Configura para o fuso horário do Brasil (São Paulo)
+fuso_horario = pytz.timezone("America/Sao_Paulo")  
 
-# Funcionários
+# Tabela de funcionários
 codigo = {
     "01": "Francisco",
     "02": "Aguado", 
@@ -14,7 +13,7 @@ codigo = {
     "05": "Ana"
 }
 
-# Registros
+# Tabela de Registros dos ponto (Entrada, Saida intervalo, Retorno Intervalo e Saida)
 registros_ponto = {
     "01": [],
     "02": [],
@@ -23,76 +22,60 @@ registros_ponto = {
     "05": []
 }
 
-def main(page: ft.Page):
-    page.title = "Folha de Ponto"
-    page.window_width = 500
-    page.window_height = 600
-    page.scroll = ft.ScrollMode.AUTO
+# Função para adicionar o ponto na lista de registros do funcionário
+def adiciona_ponto(cod, tipo):
+    agora = datetime.now(fuso_horario) # informa a data e hora configurada
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
 
-    # Elementos da interface
-    cod_input = ft.TextField(label="Código do Funcionário", width=300)
-    msg_text = ft.Text("", color="blue")
-    registro_output = ft.Text("", selectable=True)
+# Função para ver os registros do funcionário
+def exibe_registros(cod):
+    print("\n---------- Seus Registros de Ponto ----------")
+    if registros_ponto[cod]: # Verifica se tem registros do funcionário
+        for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
+            print(f"{tipo}: {horario}") 
+    else:
+        print("Nenhum ponto registrado ainda !")
+    print("---------------------------------------------\n")
+
+# Função para verifica o usuário
+def verifica_usuario(cod):
+    return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
+
+print("-----------------Folha Ponto------------------")
+usuario = None
+while usuario is None: 
+    cod = input("Qual seu código: ")
+    usuario = verifica_usuario(cod)
+    if usuario is None: 
+        print("Usuário inexistente!! Tente novamente.")
+
+print(f"Bem-vindo(a), {usuario}!")
+print("--------------Registre seu ponto--------------")
+print("1) Entrada")
+print("2) Saída intervalo")
+print("3) Retorno intervalo")
+print("4) Saída")
+print("5) Ver registros")
+
+while True:
+    resposta = input("Opção (1-5) ou 'sair' para encerrar: ").strip() # strip() remove espaços em branco 
     
-    btns = []
+    if resposta.lower() == 'sair': # lower() converte a string para minúscula ou maiúscula
+        print("Encerrando o registro de ponto !")
+        break
 
-    usuario = {"nome": None, "codigo": None}
-
-    def verifica_usuario(cod):
-        return codigo.get(cod, None)
-
-    def on_confirmar_click(e):
-        cod = cod_input.value.strip()
-        nome = verifica_usuario(cod)
-        if nome:
-            usuario["nome"] = nome
-            usuario["codigo"] = cod
-            msg_text.value = f"Bem-vindo(a), {nome}!"
-            for b in btns:
-                b.disabled = False
-        else:
-            msg_text.value = "Usuário inexistente!"
-            for b in btns:
-                b.disabled = True
-        registro_output.value = ""
-        page.update()
-
-    def adiciona_ponto(tipo):
-        agora = datetime.now(fuso_horario)
-        registros_ponto[usuario["codigo"]].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))
-        msg_text.value = f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}"
-        page.update()
-
-    def ver_registros(e):
-        cod = usuario["codigo"]
-        saida = f"\n----- Registros de {usuario['nome']} -----\n"
-        if registros_ponto[cod]:
-            for tipo, horario in registros_ponto[cod]:
-                saida += f"{tipo}: {horario}\n"
-        else:
-            saida += "Nenhum ponto registrado ainda!"
-        saida += "----------------------------------------------"
-        registro_output.value = saida
-        page.update()
-
-    # Botões
-    btn_entrada = ft.ElevatedButton("Entrada", on_click=lambda e: adiciona_ponto("Entrada"), disabled=True)
-    btn_saida_int = ft.ElevatedButton("Saída intervalo", on_click=lambda e: adiciona_ponto("Saída intervalo"), disabled=True)
-    btn_retorno = ft.ElevatedButton("Retorno intervalo", on_click=lambda e: adiciona_ponto("Retorno intervalo"), disabled=True)
-    btn_saida = ft.ElevatedButton("Saída", on_click=lambda e: adiciona_ponto("Saída"), disabled=True)
-    btn_ver = ft.ElevatedButton("Ver registros", on_click=ver_registros, disabled=True)
-
-    btns.extend([btn_entrada, btn_saida_int, btn_retorno, btn_saida, btn_ver])
-
-    # Layout
-    page.add(
-        ft.Text("Folha de Ponto", size=30, weight="bold"),
-        cod_input,
-        ft.ElevatedButton("Confirmar", on_click=on_confirmar_click),
-        msg_text,
-        ft.Column(btns, spacing=10),
-        ft.Divider(),
-        registro_output
-    )
-
-ft.app(target=main)
+    if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
+        tipos = {
+            "1": "Entrada",
+            "2": "Saída intervalo",
+            "3": "Retorno intervalo",
+            "4": "Saída"
+        }
+        tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
+        adiciona_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
+        agora = datetime.now(fuso_horario) # informa a data e hora configurada
+        print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
+    elif resposta == "5":
+        exibe_registros(cod) # Exibe os registros do funcionário
+    else:
+        print("Opção inválida! Tente novamente.")
