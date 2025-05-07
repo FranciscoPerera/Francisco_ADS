@@ -27,6 +27,16 @@ def adiciona_ponto(cod, tipo):
     agora = datetime.now(fuso_horario) # informa a data e hora configurada
     registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
 
+# Função para exibir os registros do funcionário
+def exibe_registros(cod):
+    print("\n---------- Seus Registros de Ponto ----------")
+    if registros_ponto[cod]:
+        for tipo, horario in registros_ponto[cod]:
+            print(f"{tipo}: {horario}")
+    else:
+        print("Nenhum ponto registrado ainda !")
+    print("---------------------------------------------\n")
+
 # Função que verificar o usuário
 def verifica_usuario(cod):
     return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
@@ -45,9 +55,10 @@ print("1) Entrada")
 print("2) Saída intervalo")
 print("3) Retorno intervalo")
 print("4) Saída")
+print("5) Ver registros")
 
 while True:
-    resposta = input("Registrar (1-4) ou 'sair' para encerrar: ").strip() # strip() remove espaços em branco 
+    resposta = input("Opção (1-5) ou 'sair' para encerrar: ").strip() # strip() remove espaços em branco 
     
     if resposta.lower() == 'sair': # lower() converte a string para minúscula ou maiúscula
         print("Encerrando o registro de ponto !")
@@ -64,5 +75,7 @@ while True:
         adiciona_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
         agora = datetime.now(fuso_horario) # informa a data e hora configurada
         print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
+    elif resposta == "5":
+        exibe_registros(cod) # Exibe os registros do funcionário
     else:
         print("Opção inválida! Tente novamente.")
