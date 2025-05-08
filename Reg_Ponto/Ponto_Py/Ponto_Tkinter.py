@@ -1,7 +1,7 @@
-import tkinter as tk  # Importa a biblioteca tkinter para criação de interfaces gráficas
-from tkinter import messagebox, scrolledtext  # Importa messagebox para exibir mensagens e scrolledtext para um campo de texto com barra de rolagem
-from datetime import datetime  # Importa o módulo datetime para trabalhar com data e hora
-import pytz  # Importa pytz para lidar com fusos horários
+import tkinter as tk  # Biblioteca para criar a interface gráfica
+from tkinter import messagebox, scrolledtext  # Biblioteca para exibir mensagens
+from datetime import datetime  # Biblioteca para lidar com datas e horas
+import pytz  # Biblioteca para lidar com fusos horários 
 
 # Configura o fuso horário do Brasil (São Paulo)
 fuso_horario = pytz.timezone("America/Sao_Paulo")
