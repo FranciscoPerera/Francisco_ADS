@@ -23,12 +23,12 @@ registros_ponto = {
 }
 
 # Função para adicionar o ponto na lista de registros do funcionário
-def adiciona_ponto(cod, tipo):
+def adicionar_ponto(cod, tipo):
     agora = datetime.now(fuso_horario) # informa a data e hora configurada
     registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
 
 # Função para ver os registros do funcionário
-def exibe_registros(cod):
+def ver_registros(cod):
     print("\n---------- Seus Registros de Ponto ----------")
     if registros_ponto[cod]: # Verifica se tem registros do funcionário
         for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
@@ -37,15 +37,15 @@ def exibe_registros(cod):
         print("Nenhum ponto registrado ainda !")
     print("---------------------------------------------\n")
 
-# Função para verifica o usuário
-def verifica_usuario(cod):
+# Função para verificar o usuário
+def verificar_usuario(cod):
     return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
 
 print("-----------------Folha Ponto------------------")
 usuario = None
 while usuario is None: 
     cod = input("Qual seu código: ")
-    usuario = verifica_usuario(cod)
+    usuario = verificar_usuario(cod)
     if usuario is None: 
         print("Usuário inexistente!! Tente novamente.")
 
@@ -72,10 +72,10 @@ while True:
             "4": "Saída"
         }
         tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
-        adiciona_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
+        adicionar_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
         agora = datetime.now(fuso_horario) # informa a data e hora configurada
         print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
     elif resposta == "5":
-        exibe_registros(cod) # Exibe os registros do funcionário
+        ver_registros(cod) # Exibe os registros do funcionário
     else:
         print("Opção inválida! Tente novamente.")
