@@ -6,7 +6,7 @@ import pytz  # Importa pytz para lidar com fusos horários
 # Configura o fuso horário do Brasil (São Paulo)
 fuso_horario = pytz.timezone("America/Sao_Paulo")
 
-# Tabela de funcionários: associa um código a um nome de funcionário
+# Tabela de funcionários
 codigo = {
     "01": "Francisco",
     "02": "Aguado",
@@ -15,7 +15,7 @@ codigo = {
     "05": "Ana"
 }
 
-# Tabela de registros de ponto: para cada código de funcionário, armazena uma lista de registros de ponto (entrada, saída, etc.)
+# Tabela de Registros dos ponto (Entrada, Saida intervalo, Retorno Intervalo e Saida)
 registros_ponto = {
     "01": [],
     "02": [],
@@ -24,7 +24,7 @@ registros_ponto = {
     "05": []
 }
 
-# Função para adicionar um registro de ponto (entrada, saída, etc.)
+# Função para adicionar o ponto na lista de registros do funcionário
 def adicionar_ponto(tipo):
     cod = entry_codigo.get()  # Obtém o código do funcionário inserido no campo de entrada
     if cod not in codigo:  # Verifica se o código do funcionário é válido
@@ -35,7 +35,7 @@ def adicionar_ponto(tipo):
     registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))  
     messagebox.showinfo("Sucesso", f"{tipo} registrado com sucesso!")  # Exibe mensagem de sucesso
 
-# Função para visualizar os registros de ponto de um funcionário
+# Função para ver os registros do funcionário
 def ver_registros():
     cod = entry_codigo.get()  # Obtém o código do funcionário inserido no campo de entrada
     if cod not in codigo:  # Verifica se o código do funcionário é válido
