@@ -1,12 +1,12 @@
-import tkinter as tk
-from tkinter import messagebox, scrolledtext
-from datetime import datetime
-import pytz
+import tkinter as tk  # Importa a biblioteca tkinter para criação de interfaces gráficas
+from tkinter import messagebox, scrolledtext  # Importa messagebox para exibir mensagens e scrolledtext para um campo de texto com barra de rolagem
+from datetime import datetime  # Importa o módulo datetime para trabalhar com data e hora
+import pytz  # Importa pytz para lidar com fusos horários
 
 # Configura o fuso horário do Brasil (São Paulo)
 fuso_horario = pytz.timezone("America/Sao_Paulo")
 
-# Tabela de funcionários
+# Tabela de funcionários: associa um código a um nome de funcionário
 codigo = {
     "01": "Francisco",
     "02": "Aguado",
@@ -15,7 +15,7 @@ codigo = {
     "05": "Ana"
 }
 
-# Tabela de registros de ponto
+# Tabela de registros de ponto: para cada código de funcionário, armazena uma lista de registros de ponto (entrada, saída, etc.)
 registros_ponto = {
     "01": [],
     "02": [],
@@ -24,48 +24,52 @@ registros_ponto = {
     "05": []
 }
 
-# Função para adicionar ponto
+# Função para adicionar um registro de ponto (entrada, saída, etc.)
 def adicionar_ponto(tipo):
-    cod = entry_codigo.get()
-    if cod not in codigo:
-        messagebox.showerror("Erro", "Código inválido!")
+    cod = entry_codigo.get()  # Obtém o código do funcionário inserido no campo de entrada
+    if cod not in codigo:  # Verifica se o código do funcionário é válido
+        messagebox.showerror("Erro", "Código inválido!")  # Exibe mensagem de erro se o código não for válido
         return
-    agora = datetime.now(fuso_horario)
-    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))
-    messagebox.showinfo("Sucesso", f"{tipo} registrado com sucesso!")
+    agora = datetime.now(fuso_horario)  # Obtém a data e hora atual no fuso horário de São Paulo
+    # Adiciona o tipo de ponto e a data/hora na lista de registros do funcionário
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))  
+    messagebox.showinfo("Sucesso", f"{tipo} registrado com sucesso!")  # Exibe mensagem de sucesso
 
-# Função para ver registros
+# Função para visualizar os registros de ponto de um funcionário
 def ver_registros():
-    cod = entry_codigo.get()
-    if cod not in codigo:
-        messagebox.showerror("Erro", "Código inválido!")
+    cod = entry_codigo.get()  # Obtém o código do funcionário inserido no campo de entrada
+    if cod not in codigo:  # Verifica se o código do funcionário é válido
+        messagebox.showerror("Erro", "Código inválido!")  # Exibe mensagem de erro se o código não for válido
         return
-    texto_registros.delete('1.0', tk.END)
-    texto_registros.insert(tk.END, f"--- Registros de {codigo[cod]} ---\n")
-    if registros_ponto[cod]:
-        for tipo, horario in registros_ponto[cod]:
-            texto_registros.insert(tk.END, f"{tipo}: {horario}\n")
+    texto_registros.delete('1.0', tk.END)  # Limpa o conteúdo atual da área de registros
+    texto_registros.insert(tk.END, f"--- Registros de {codigo[cod]} ---\n")  # Exibe o nome do funcionário
+    if registros_ponto[cod]:  # Se houver registros de ponto
+        for tipo, horario in registros_ponto[cod]:  # Para cada registro de ponto
+            texto_registros.insert(tk.END, f"{tipo}: {horario}\n")  # Exibe o tipo e o horário do registro
     else:
-        texto_registros.insert(tk.END, "Nenhum ponto registrado ainda.\n")
+        texto_registros.insert(tk.END, "Nenhum ponto registrado ainda.\n")  # Caso não haja registros
 
-# Criando interface
-janela = tk.Tk()
-janela.title("Sistema de Ponto")
-janela.geometry("400x500")
-janela.resizable(False, False)
+# Criando a janela
+janela = tk.Tk()  # Cria a janela 
+janela.title("Sistema de Ponto")  # Define o título da janela
+janela.geometry("400x500")  # Define o tamanho da janela
+janela.resizable(False, False)  # Impede que a janela seja redimensionada
 
-# Widgets
-tk.Label(janela, text="Código do Funcionário:").pack(pady=5)
-entry_codigo = tk.Entry(janela, width=10, justify='center')
+# Componentes da interface gráfica
+tk.Label(janela, text="Código do Funcionário:").pack(pady=5)  # Texto pedindp o código do funcionário
+entry_codigo = tk.Entry(janela, width=10, justify='center')  # Caixa de entrada para o código do funcionário
 entry_codigo.pack()
 
+# Botões de ponto
 tk.Button(janela, text="Entrada", width=20, command=lambda: adicionar_ponto("Entrada")).pack(pady=5)
 tk.Button(janela, text="Saída Intervalo", width=20, command=lambda: adicionar_ponto("Saída intervalo")).pack(pady=5)
 tk.Button(janela, text="Retorno Intervalo", width=20, command=lambda: adicionar_ponto("Retorno intervalo")).pack(pady=5)
 tk.Button(janela, text="Saída", width=20, command=lambda: adicionar_ponto("Saída")).pack(pady=5)
 tk.Button(janela, text="Ver Registros", width=20, command=ver_registros).pack(pady=10)
 
-texto_registros = scrolledtext.ScrolledText(janela, width=45, height=15)
+# Área para ver os registros de ponto
+texto_registros = scrolledtext.ScrolledText(janela, width=45, height=15)  
 texto_registros.pack(pady=10)
 
+# Inicia um loop, ate ser fechado
 janela.mainloop()
