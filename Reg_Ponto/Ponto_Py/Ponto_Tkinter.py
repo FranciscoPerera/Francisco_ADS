@@ -26,7 +26,7 @@ registros_ponto = {
 
 # Função para adicionar o ponto na lista de registros do funcionário
 def adicionar_ponto(tipo):
-    cod = entry_codigo.get()  # Pega o código do funcionário inserido no campo de entrada
+    cod = entry_codigo.get()  # Pega o código do funcionário  
     if cod not in codigo:  # Verifica se o código do funcionário é válido
         messagebox.showerror("Erro", "Código inválido!")  # Mostra a mensagem de erro se o código não for válido
         return
@@ -36,17 +36,17 @@ def adicionar_ponto(tipo):
 
 # Função para ver os registros do funcionário
 def ver_registros():
-    cod = entry_codigo.get()  # Obtém o código do funcionário inserido no campo de entrada
+    cod = entry_codigo.get()  # Pega o código do funcionário 
     if cod not in codigo:  # Verifica se o código do funcionário é válido
-        messagebox.showerror("Erro", "Código inválido!")  # Exibe mensagem de erro se o código não for válido
+        messagebox.showerror("Erro", "Código inválido!")  # Mostra a mensagem de erro se o código não for válido
         return
     texto_registros.delete('1.0', tk.END)  # Limpa o conteúdo atual da área de registros
     texto_registros.insert(tk.END, f"--- Registros de {codigo[cod]} ---\n")  # Exibe o nome do funcionário
-    if registros_ponto[cod]:  # Se houver registros de ponto
+    if registros_ponto[cod]: # Verifica se tem registros do funcionário
         for tipo, horario in registros_ponto[cod]:  # Para cada registro de ponto
-            texto_registros.insert(tk.END, f"{tipo}: {horario}\n")  # Exibe o tipo e o horário do registro
+            texto_registros.insert(tk.END, f"{tipo}: {horario}\n")  # Mostra o tipo e o horário do registro
     else:
-        texto_registros.insert(tk.END, "Nenhum ponto registrado ainda.\n")  # Caso não haja registros
+        texto_registros.insert(tk.END, "Nenhum ponto registrado ainda.\n")  # Caso não haja registros, mostra a  mensagem
 
 # Criando a janela
 janela = tk.Tk()  # Cria a janela 
