@@ -26,14 +26,13 @@ registros_ponto = {
 
 # Função para adicionar o ponto na lista de registros do funcionário
 def adicionar_ponto(tipo):
-    cod = entry_codigo.get()  # Obtém o código do funcionário inserido no campo de entrada
+    cod = entry_codigo.get()  # Pega o código do funcionário inserido no campo de entrada
     if cod not in codigo:  # Verifica se o código do funcionário é válido
-        messagebox.showerror("Erro", "Código inválido!")  # Exibe mensagem de erro se o código não for válido
+        messagebox.showerror("Erro", "Código inválido!")  # Mostra a mensagem de erro se o código não for válido
         return
-    agora = datetime.now(fuso_horario)  # Obtém a data e hora atual no fuso horário de São Paulo
-    # Adiciona o tipo de ponto e a data/hora na lista de registros do funcionário
-    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))  
-    messagebox.showinfo("Sucesso", f"{tipo} registrado com sucesso!")  # Exibe mensagem de sucesso
+    agora = datetime.now(fuso_horario)  # informa a data e hora configurada
+    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S")))  # formata a data e hora
+    messagebox.showinfo("Sucesso", f"{tipo} registrado com sucesso!")  # Mostra a mensagem de sucesso
 
 # Função para ver os registros do funcionário
 def ver_registros():
