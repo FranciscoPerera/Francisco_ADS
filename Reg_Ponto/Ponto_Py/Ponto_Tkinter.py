@@ -56,15 +56,15 @@ janela.resizable(False, False)  # Impede que a janela seja redimensionada
 
 # Componentes da interface gráfica
 tk.Label(janela, text="Código do Funcionário:").pack(pady=5)  # Texto pedindp o código do funcionário
-entry_codigo = tk.Entry(janela, width=10, justify='center')  # Caixa de entrada para o código do funcionário
-entry_codigo.pack()
+entry_codigo = tk.Entry(janela, width=15, justify='center')  # Caixa de entrada para o código do funcionário
+entry_codigo.pack() 
 
 # Botões de ponto
-tk.Button(janela, text="Entrada", width=20, command=lambda: adicionar_ponto("Entrada")).pack(pady=5)
-tk.Button(janela, text="Saída Intervalo", width=20, command=lambda: adicionar_ponto("Saída intervalo")).pack(pady=5)
-tk.Button(janela, text="Retorno Intervalo", width=20, command=lambda: adicionar_ponto("Retorno intervalo")).pack(pady=5)
-tk.Button(janela, text="Saída", width=20, command=lambda: adicionar_ponto("Saída")).pack(pady=5)
-tk.Button(janela, text="Ver Registros", width=20, command=ver_registros).pack(pady=10)
+tk.Button(janela, text="Entrada", width=20, bg="#00FF00", command=lambda: adicionar_ponto("Entrada")).pack(pady=5)
+tk.Button(janela, text="Saída Intervalo", width=20, bg="#F0E68C", command=lambda: adicionar_ponto("Saída intervalo")).pack(pady=5)
+tk.Button(janela, text="Retorno Intervalo", width=20, bg="#00BFFF", command=lambda: adicionar_ponto("Retorno intervalo")).pack(pady=5)
+tk.Button(janela, text="Saída", width=20, bg="#DC143C", command=lambda: adicionar_ponto("Saída")).pack(pady=5)
+tk.Button(janela, text="Ver Registros", width=20, bg="white", command=ver_registros).pack(pady=10)
 
 # Área para ver os registros de ponto
 texto_registros = scrolledtext.ScrolledText(janela, width=45, height=15)  
