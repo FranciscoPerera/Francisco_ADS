@@ -60,10 +60,10 @@ entry_codigo = tk.Entry(janela, width=15, justify='center')  # Caixa de entrada 
 entry_codigo.pack() # Adiciona a caixa à janela
 
 # Botões de ponto
-tk.Button(janela, text="Entrada", width=20, bg="#00FF00", command=lambda: adicionar_ponto("Entrada")).pack(pady=5)
-tk.Button(janela, text="Saída Intervalo", width=20, bg="#F0E68C", command=lambda: adicionar_ponto("Saída intervalo")).pack(pady=5)
-tk.Button(janela, text="Retorno Intervalo", width=20, bg="#00BFFF", command=lambda: adicionar_ponto("Retorno intervalo")).pack(pady=5)
-tk.Button(janela, text="Saída", width=20, bg="#DC143C", command=lambda: adicionar_ponto("Saída")).pack(pady=5)
+tk.Button(janela, text="✅ Entrada", width=20, bg="#00FF00", command=lambda: adicionar_ponto("Entrada")).pack(pady=5)
+tk.Button(janela, text="⏸️ Saída Intervalo", width=20, bg="#F0E68C", command=lambda: adicionar_ponto("Saída intervalo")).pack(pady=5)
+tk.Button(janela, text="🔁 Retorno Intervalo", width=20, bg="#00BFFF", command=lambda: adicionar_ponto("Retorno intervalo")).pack(pady=5)
+tk.Button(janela, text="❌ Saída", width=20, bg="#DC143C", command=lambda: adicionar_ponto("Saída")).pack(pady=5)
 tk.Button(janela, text="Ver Registros", width=20, bg="white", command=ver_registros).pack(pady=10)
 
 # Área para ver os registros de ponto
