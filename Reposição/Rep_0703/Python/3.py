@@ -4,30 +4,30 @@
 import statistics
 
 dias_da_semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
-semanas = []
+semanas = {}  
 
 for i in range(1, 4):
-    semana = {}
-    print(f"\nInsira as temperaturas da semana {i}:")
+    chave_semana = f"Semana {i}"
+    semanas[chave_semana] = {}
+    print(f"\nInsira as temperaturas da {chave_semana}:")
     for dia in dias_da_semana:
         while True:
             try:
                 temp = float(input(f"{dia}: "))
-                semana[dia] = temp
+                semanas[chave_semana][dia] = temp
                 break
             except ValueError:
                 print("Por favor, insira um número válido.")
-    semanas.append(semana)
 
 todas_temperaturas = []
-for semana in semanas:
+for semana in semanas.values():
     todas_temperaturas.extend(semana.values())
 
 media_geral = statistics.mean(todas_temperaturas)
 print(f"\nA média geral de temperatura nas 3 semanas foi: {media_geral:.2f}°C")
 
 print("\nDias com temperaturas abaixo da média:")
-for i, semana in enumerate(semanas, 1):
-    for dia, temperatura in semana.items():
+for nome_semana, dias in semanas.items():
+    for dia, temperatura in dias.items():
         if temperatura < media_geral:
-            print(f"Semana {i} - {dia}: {temperatura:.2f}°C")
+            print(f"{nome_semana} - {dia}: {temperatura:.2f}°C")
