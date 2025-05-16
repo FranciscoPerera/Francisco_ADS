@@ -17,7 +17,6 @@ while sair != "0":
     }
 
     lista.append(algoritmos)
-
     sair = input("Digite 0 para finalizar ou qualquer outra tecla para continuar: ")
 
 print("\n---------- Lista final: ---------------")
