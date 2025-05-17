@@ -20,6 +20,31 @@ while sair != "0":
     lista.append(algoritmos)
     sair = input("Digite 0 para finalizar ou qualquer outra tecla para continuar: ")
 
+print("\n---------- Lista atual: ---------------")
+for i, item in enumerate(lista):
+    print(f"{i}: {item}")
+
+excluir = input("\nDeseja excluir algum item da lista? (s/n): ").lower()
+while excluir == "s":
+    indice_str = input("Digite o número do item que deseja excluir: ")
+
+    if indice_str.isdigit():
+        indice = int(indice_str)
+        if 0 <= indice < len(lista):
+            removido = lista.pop(indice)
+            print(f"Item removido: {removido}")
+        else:
+            print("Índice fora do intervalo da lista.")
+    else:
+        print("Você precisa digitar um número válido.")
+
+    print("\n---------- Lista atualizada: ---------------")
+    for i, item in enumerate(lista):
+        print(f"{i}: {item}")
+
+    excluir = input("\nDeseja excluir outro item? (s/n): ").lower()
+
+# Lista final
 print("\n---------- Lista final: ---------------")
 for item in lista:
     print(item)
