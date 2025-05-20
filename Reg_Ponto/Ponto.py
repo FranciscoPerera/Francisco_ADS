@@ -95,7 +95,7 @@ while True:
     if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
         tipos = {
             "1": "✅ Entrada",
-            "2": "⏸️ Saída intervalo",
+            "2": "⏸️  Saída intervalo",
             "3": "🔁 Retorno intervalo",
             "4": "❌ Saída"
         }
