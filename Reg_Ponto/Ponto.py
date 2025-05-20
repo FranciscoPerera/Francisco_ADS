@@ -72,12 +72,12 @@ def verificar_usuario(cod):
 print("-----------------Folha Ponto------------------")
 usuario = None
 while usuario is None: 
-    cod = input("Qual seu código: ")
+    cod = input("Qual seu CV: ")
     usuario = verificar_usuario(cod)
     if usuario is None: 
         print("Usuário inexistente!! Tente novamente.")
 
-print(f"Bem-vindo(a), {usuario}!")
+print(f"Bem Vindo(a), {usuario}!")
 print("--------------Registre seu ponto--------------")
 print("1) Entrada")
 print("2) Saída intervalo")
