@@ -6,28 +6,55 @@ import pytz  # Biblioteca para lidar com fusos horários
 # Configura o fuso horário do Brasil (São Paulo)
 fuso_horario = pytz.timezone("America/Sao_Paulo")
 
-# Tabela de funcionários
-codigo = {
-    "01": "Francisco",
-    "02": "Aguado",
-    "03": "Luiza",
-    "04": "Gabriel",
-    "05": "Ana"
+codigo_turma = {
+    "01": "Eu",
+    "3096629": "Amanda", 
+    "3095169": "Andre",
+    "3095479": "Brendo",
+    "3095321": "Caio",
+    "3102564": "Carlos", 
+    "3096866": "Davi",
+    "3103234": "Enrico",
+    "3096998": "Felipe",
+    "3096556": "Francisco", 
+    "3096726": "Guilherme",
+    "3098184": "Joey",
+    "3095126": "Marcelo",
+    "309670X": "Matheus",
+    "3096807": "Mauricio",
+    "3102645": "Pietra",
+    "3095568": "Renan",
+    "3096611": "Roger",
+    "3102653": "Vinicuis"
 }
 
 # Tabela de Registros dos ponto (Entrada, Saida intervalo, Retorno Intervalo e Saida)
 registros_ponto = {
     "01": [],
-    "02": [],
-    "03": [],
-    "04": [],
-    "05": []
+    "3096629": [],
+    "3095169": [],
+    "3095479": [],
+    "3095321": [],
+    "3102564": [],
+    "3096866": [],
+    "3103234": [],
+    "3096998": [],
+    "3096556": [],
+    "3096726": [],
+    "3098184": [],
+    "3095126": [],
+    "309670X": [],
+    "3096807": [],
+    "3102645": [],
+    "3095568": [],
+    "3096611": [],
+    "3102653": []
 }
 
 # Função para adicionar o ponto na lista de registros do funcionário
 def adicionar_ponto(tipo):
     cod = entry_codigo.get()  # Pega o código do funcionário  
-    if cod not in codigo:  # Verifica se o código do funcionário é válido
+    if cod not in codigo_turma:  # Verifica se o código do funcionário é válido
         messagebox.showerror("Erro", "Código inválido!")  # Mostra a mensagem de erro se o código não for válido
         return
     agora = datetime.now(fuso_horario)  # informa a data e hora configurada
@@ -37,11 +64,11 @@ def adicionar_ponto(tipo):
 # Função para ver os registros do funcionário
 def ver_registros():
     cod = entry_codigo.get()  # Pega o código do funcionário 
-    if cod not in codigo:  # Verifica se o código do funcionário é válido
+    if cod not in codigo_turma:  # Verifica se o código do funcionário é válido
         messagebox.showerror("Erro", "Código inválido!")  # Mostra a mensagem de erro se o código não for válido
         return
     texto_registros.delete('1.0', tk.END)  # Limpa o conteúdo atual da área de registros
-    texto_registros.insert(tk.END, f"--- Registros de {codigo[cod]} ---\n")  # Exibe o nome do funcionário
+    texto_registros.insert(tk.END, f"--- Registros de {codigo_turma[cod]} ---\n")  # Exibe o nome do funcionário
     if registros_ponto[cod]: # Verifica se tem registros do funcionário
         for tipo, horario in registros_ponto[cod]:  # Para cada registro de ponto
             texto_registros.insert(tk.END, f"{tipo}: {horario}\n")  # Mostra o tipo e o horário do registro
