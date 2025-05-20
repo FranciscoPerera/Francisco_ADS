@@ -5,21 +5,49 @@ import pytz  # Biblioteca para lidar com fusos horários
 fuso_horario = pytz.timezone("America/Sao_Paulo")  
 
 # Tabela de funcionários
-codigo = {
-    "01": "Francisco",
-    "02": "Aguado", 
-    "03": "Luiza",
-    "04": "Gabriel",
-    "05": "Ana"
+codigo_turma = {
+    "01": "Eu",
+    "3096629": "Amanda", 
+    "3095169": "Andre",
+    "3095479": "Brendo",
+    "3095321": "Caio",
+    "3102564": "Carlos", 
+    "3096866": "Davi",
+    "3103234": "Enrico",
+    "3096998": "Felipe",
+    "3096556": "Francisco", 
+    "3096726": "Guilherme",
+    "3098184": "Joey",
+    "3095126": "Marcelo",
+    "309670X": "Matheus",
+    "3096807": "Mauricio",
+    "3102645": "Pietra",
+    "3095568": "Renan",
+    "3096611": "Roger",
+    "3102653": "Vinicuis"
 }
 
 # Tabela de Registros dos ponto (Entrada, Saida intervalo, Retorno Intervalo e Saida)
 registros_ponto = {
     "01": [],
-    "02": [],
-    "03": [],
-    "04": [],
-    "05": []
+    "3096629": [],
+    "3095169": [],
+    "3095479": [],
+    "3095321": [],
+    "3102564": [],
+    "3096866": [],
+    "3103234": [],
+    "3096998": [],
+    "3096556": [],
+    "3096726": [],
+    "3098184": [],
+    "3095126": [],
+    "309670X": [],
+    "3096807": [],
+    "3102645": [],
+    "3095568": [],
+    "3096611": [],
+    "3102653": []
 }
 
 # Função para adicionar o ponto na lista de registros do funcionário
@@ -29,7 +57,7 @@ def adicionar_ponto(cod, tipo):
 
 # Função para ver os registros do funcionário
 def ver_registros(cod):
-    print("\n---------- Seus Registros de Ponto ----------")
+    print(f"\n---------- Registros de {usuario} ----------")
     if registros_ponto[cod]: # Verifica se tem registros do funcionário
         for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
             print(f"{tipo}: {horario}") 
@@ -39,7 +67,7 @@ def ver_registros(cod):
 
 # Função para verificar o usuário
 def verificar_usuario(cod):
-    return codigo.get(cod, None) # verifica se o cod existe na tabela funcionários
+    return codigo_turma.get(cod, None) # verifica se o cod existe na tabela funcionários
 
 print("-----------------Folha Ponto------------------")
 usuario = None
@@ -66,10 +94,10 @@ while True:
 
     if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
         tipos = {
-            "1": "Entrada",
-            "2": "Saída intervalo",
-            "3": "Retorno intervalo",
-            "4": "Saída"
+            "1": "✅ Entrada",
+            "2": "⏸️ Saída intervalo",
+            "3": "🔁 Retorno intervalo",
+            "4": "❌ Saída"
         }
         tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
         adicionar_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
