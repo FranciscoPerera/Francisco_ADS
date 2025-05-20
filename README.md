@@ -13,6 +13,6 @@ Este é um sistema simples de registro de ponto desenvolvido em Python utilizand
 
 ## 🛠 Tecnologias Utilizadas
 - Python 
-- [tkinter](https://docs.python.org/3/library/tkinter.html) - Interface gráfica
-- datetime - Datas e horários
-- [pytz](https://pypi.org/project/pytz/) - Manipulação de fusos horários
+- [Tkinter](https://docs.python.org/3/library/tkinter.html) - Interface gráfica
+- [Datetime](https://docs.python.org/3/library/datetime.html) - Datas e horários
+- [Pytz](https://pypi.org/project/pytz/) - Manipulação de fusos horários
