@@ -82,8 +82,8 @@ janela.geometry("400x500")  # Define o tamanho da janela
 janela.resizable(False, False)  # Impede que a janela seja redimensionada
 
 # Componentes da interface gráfica
-tk.Label(janela, text="Código do Funcionário:").pack(pady=5)  # Texto pedindp o código do funcionário
-entry_codigo = tk.Entry(janela, width=15, justify='center')  # Caixa de entrada para o código do funcionário
+tk.Label(janela, text="Prontuario do Aluno:").pack(pady=5)  # Texto pedindo o código do funcionário
+entry_codigo = tk.Entry(janela, width=15, justify='center')  # Caixa de entrada para o código do aluno
 entry_codigo.pack() # Adiciona a caixa à janela
 
 # Botões de ponto
