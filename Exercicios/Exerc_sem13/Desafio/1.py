@@ -1,5 +1,18 @@
-# 1) A partir do código feito na última aula e disponível em https://github.com/aleaguado/ifsp_algo25/tree/main/3005 , adicione os seguintes elementos:
+# Existe um problema no nosso código. A letra Z, por exemplo, não tem substituta na criptografia. 
 
-# Permita ao usuário escolher a chave de criptografia, ou seja, quantas posições no alfabeto serão adicionadas na criptografia. Por exemplo, no programa que fizemos a chave é 1, (a é substituido por b, e por f). No seu novo programa, se o usuário escolher a chave 3, a será substituido por d.
-# Existe um problema no nosso código. A letra Z, por exemplo, não tem substituta na criptografia. Altere o código de forma que esse lista do alfabeto seja cíclica, por exemplo, se a palavra tiver a letra Z, com a chave 2, ela seja substituida por B.
-# (Extra) Refaça o programa de forma que você tenha 2 funções, criptografa() e descriptografa(). O usuário deverá escolher a opção desejada e seu programa fazer o que precisa fazer.
+# Em Python, crie uma lista que contenha todas as letras do alfabeto, de forma ordenada. Ao final, percorra a lista com um laço de repetição, imprimindo as letras;
+alfabeto = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t', 'u', 'v','w','x','y','z']
+
+def troca(pl):
+    cripto = []
+    for letra in pl:
+        i = alfabeto.index(letra)
+        i = (i + 1) % len(alfabeto)  # Volta ao início 
+        cripto.append(alfabeto[i])
+    return cripto
+        
+
+#Pedir usuario uma palavra
+palavra = input("Digite uma palavra: ").lower()
+lista = troca(palavra)
+print(lista)
