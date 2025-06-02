@@ -1,0 +1,1 @@
+# 2) Crie um programa que faça o que o software TERMO faz, ou seja, um jogo de adivinhação de letras e palavras.

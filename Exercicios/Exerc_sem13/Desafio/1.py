@@ -1,0 +1,5 @@
+# 1) A partir do código feito na última aula e disponível em https://github.com/aleaguado/ifsp_algo25/tree/main/3005 , adicione os seguintes elementos:
+
+# Permita ao usuário escolher a chave de criptografia, ou seja, quantas posições no alfabeto serão adicionadas na criptografia. Por exemplo, no programa que fizemos a chave é 1, (a é substituido por b, e por f). No seu novo programa, se o usuário escolher a chave 3, a será substituido por d.
+# Existe um problema no nosso código. A letra Z, por exemplo, não tem substituta na criptografia. Altere o código de forma que esse lista do alfabeto seja cíclica, por exemplo, se a palavra tiver a letra Z, com a chave 2, ela seja substituida por B.
+# (Extra) Refaça o programa de forma que você tenha 2 funções, criptografa() e descriptografa(). O usuário deverá escolher a opção desejada e seu programa fazer o que precisa fazer.
