@@ -8,11 +8,8 @@ Este é um sistema de registro de ponto desenvolvido em Python utilizando a bibl
   - 🔁 Retorno do Intervalo
   - ❌ Saída
 - Visualização dos registros por funcionário
-- Interface gráfica com botões coloridos
-- Uso do fuso horário de São Paulo (UTC-3)
 
 ## 🛠 Tecnologias Utilizadas
 - Python 
-- [Tkinter](https://docs.python.org/3/library/tkinter.html) - Interface gráfica
 - [Datetime](https://docs.python.org/3/library/datetime.html) - Datas e horários
 - [Pytz](https://pypi.org/project/pytz/) - Manipulação de fusos horários
