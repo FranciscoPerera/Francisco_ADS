@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 def soma():
     valor1 = float(s1.get())
@@ -7,7 +8,7 @@ def soma():
     total = valor1 + valor2 + valor3
     resultado.config(text=f"{nome.get()}, neste ano você recebeu R$ {total:.2f}")
     if(total <= 15000):
-        resultado2.config(text=f"Até agora você está isento de pagar imposto de renda!")
+        messagebox.showinfo("Mensagem !!", f"Parabens, {nome.get()} até agora você está isento de pagar imposto de renda!")
     
 # Cria a janela principal
 janela = tk.Tk()
