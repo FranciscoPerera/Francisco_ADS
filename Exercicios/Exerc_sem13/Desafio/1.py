@@ -7,7 +7,7 @@ def troca(pl):
     cripto = []
     for letra in pl:
         i = alfabeto.index(letra)
-        i = (i + 1) % len(alfabeto)  # Volta ao início 
+        i = (i + 1) % len(alfabeto)  # Volta pro início 
         cripto.append(alfabeto[i])
     return cripto
         
