@@ -1,4 +1,6 @@
-# Atividade_Desafio
+# Desafio Interface Grafica
+
+import tkinter as tk
 
 nome = input("Digite seu nome: ")
 
