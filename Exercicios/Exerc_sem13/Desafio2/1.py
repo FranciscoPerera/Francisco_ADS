@@ -30,7 +30,6 @@ s3 = tk.Entry(janela, font="Arial")
 
 bt = tk.Button(janela, text="Descobrir!", width=10, command=soma)
 resultado = tk.Label(janela, text="", font="Arial")
-
 resultado2 = tk.Label(janela, text="", font="Arial")
 
 
