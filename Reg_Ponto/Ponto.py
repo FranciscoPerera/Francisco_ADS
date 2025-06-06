@@ -1,7 +1,7 @@
 from datetime import datetime # Biblioteca para lidar com datas e horas
 import pytz  # Biblioteca para lidar com fusos horários 
 
-# Configura para o fuso horário do Brasil (São Paulo)
+# Configura para o fuso horario do Brasil
 fuso_horario = pytz.timezone("America/Sao_Paulo")  
 
 # Tabela de funcionários
@@ -86,9 +86,9 @@ print("4) Saída")
 print("5) Ver registros")
 
 while True:
-    resposta = input("Opção (1-5) ou 'sair' para encerrar: ").strip() # strip() remove espaços em branco 
+    resposta = input("Opção (1-5) ou 'sair' para encerrar: ").strip() # strip remove espaços em branco 
     
-    if resposta.lower() == 'sair': # lower() converte a string para minúscula ou maiúscula
+    if resposta.lower() == 'sair':
         print("Encerrando o registro de ponto !")
         break
 
