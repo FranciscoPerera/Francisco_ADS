@@ -32,7 +32,6 @@ bt = tk.Button(janela, text="Descobrir!", width=10, command=soma)
 resultado = tk.Label(janela, text="", font="Arial")
 resultado2 = tk.Label(janela, text="", font="Arial")
 
-
 # Adiciona os componentes à janela
 entrada_nome.pack(pady=5)
 nome.pack(pady=5)
