@@ -30,31 +30,34 @@ def calcular_imc():
 # Cria a janela principal
 janela = tk.Tk()
 janela.title("Calculador de IMC")
-janela.geometry("400x400")
+janela.geometry("300x300")
 
-# Cria os componentes
+# Cria e Adiciona os componentes
 entrada_nome = tk.Label(janela, text="Digite seu nome: ", font="Arial")
+entrada_nome.pack(pady=5)
+
 nome = tk.Entry(janela, font="Arial")
+nome.pack(pady=5)
 
 entrada_peso = tk.Label(janela, text="Digite seu peso (em kg): ", font="Arial")
+entrada_peso.pack(pady=5)
+
 peso = tk.Entry(janela, font="Arial")
+peso.pack(pady=5)
 
 entrada_altura = tk.Label(janela, text="Digite sua altura em metros(Ex.1.80): ", font="Arial")
+entrada_altura.pack(pady=5)
+
 altura = tk.Entry(janela, font="Arial")
+altura.pack(pady=5)
 
 bt = tk.Button(janela, text="Descobrir!", width=10, command=calcular_imc)
-resultado = tk.Label(janela, text="", font="Arial")
-resultado2 = tk.Label(janela, text="", font="Arial")
-
-# Adiciona os componentes à janela
-entrada_nome.pack(pady=5)
-nome.pack(pady=5)
-entrada_peso.pack(pady=5)
-peso.pack(pady=5)
-entrada_altura.pack(pady=5)
-altura.pack(pady=5)
 bt.pack(pady=5)
+
+resultado = tk.Label(janela, text="", font="Arial")
 resultado.pack(pady=5)
+
+resultado2 = tk.Label(janela, text="", font="Arial")
 resultado2.pack(pady=5)
 
 # Inicia a interface
