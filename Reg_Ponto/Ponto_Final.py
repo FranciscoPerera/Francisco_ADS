@@ -60,14 +60,16 @@ def adicionar_ponto(cod, tipo):
 
 # Função para ver os registros do funcionário
 def ver_registros(cod):
-    print(f"\n---------- Registros de {usuario} ----------")
-    if registros_ponto[cod]: # Verifica se tem registros do funcionário
-        for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
-            print(f"{tipo}: {horario}") 
-    else:
-        print("Nenhum ponto registrado ainda !")
-    print("---------------------------------------------\n")
-
+    try:
+        print(f"\n---------- Registros de {usuario} ----------")
+        if registros_ponto[cod]: # Verifica se tem registros do funcionário
+            for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
+                print(f"{tipo}: {horario}") 
+        else:
+            print("Nenhum ponto registrado ainda !")
+        print("---------------------------------------------\n")
+    except Exception as e:
+        print(f"Erro ao exibir registros: {e}")
 # Função para verificar o usuário
 def verificar_usuario(cod):
     return codigo_turma.get(cod, None) # verifica se o cod existe na tabela funcionários
