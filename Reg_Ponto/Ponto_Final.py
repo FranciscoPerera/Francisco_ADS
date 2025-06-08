@@ -70,6 +70,7 @@ def ver_registros(cod):
         print("---------------------------------------------\n")
     except Exception as e:
         print(f"Erro ao exibir registros: {e}")
+        
 # Função para verificar o usuário
 def verificar_usuario(cod):
     return codigo_turma.get(cod, None) # verifica se o cod existe na tabela funcionários
