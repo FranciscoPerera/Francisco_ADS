@@ -1,8 +1,8 @@
-from datetime import datetime # Biblioteca para lidar com datas e horas
-import pytz  # Biblioteca para lidar com fusos horários 
+from datetime import datetime
+import pytz
 
-# Configura para o fuso horario do Brasil
-fuso_horario = pytz.timezone("America/Sao_Paulo")  
+# Configura para o fuso horário do Brasil
+fuso_horario = pytz.timezone("America/Sao_Paulo")
 
 # Tabela de funcionários
 codigo_turma = {
@@ -52,8 +52,11 @@ registros_ponto = {
 
 # Função para adicionar o ponto na lista de registros do funcionário
 def adicionar_ponto(cod, tipo):
-    agora = datetime.now(fuso_horario) # informa a data e hora configurada
-    registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
+    try:
+        agora = datetime.now(fuso_horario) # informa a data e hora configurada
+        registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
+    except Exception as e:
+        print(f"Erro ao registrar ponto: {e}")
 
 # Função para ver os registros do funcionário
 def ver_registros(cod):
