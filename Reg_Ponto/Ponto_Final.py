@@ -56,9 +56,6 @@ def cor(texto, cor):
         "vermelho": "\033[91m",
         "verde": "\033[92m",
         "amarelo": "\033[93m",
-        "azul": "\033[94m",
-        "roxo": "\033[95m",
-        "ciano": "\033[96m",
         "negrito": "\033[1m",
         "reset": "\033[0m"
     }
@@ -95,7 +92,7 @@ while usuario is None:
     cod = input("🔐 Qual seu CV: ")
     usuario = verificar_usuario(cod)
     if usuario is None: 
-        print("🚫 Usuário inexistente!! Tente novamente.")
+        print(cor("🚫 Usuário inexistente!! Tente novamente.", "vermelho"))
 
 print(f"\n👋 Bem Vindo(a), {usuario}!")
 print(cor("📲 Escolha uma opção para registrar seu ponto:", "negrito"))
