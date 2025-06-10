@@ -50,18 +50,32 @@ registros_ponto = {
     "3102653": []
 }
 
+# Função para dar cor as palavras no terminal
+def cor(texto, cor):
+    cores = {
+        "vermelho": "\033[91m",
+        "verde": "\033[92m",
+        "amarelo": "\033[93m",
+        "azul": "\033[94m",
+        "roxo": "\033[95m",
+        "ciano": "\033[96m",
+        "negrito": "\033[1m",
+        "reset": "\033[0m"
+    }
+    return f"{cores.get(cor, '')}{texto}{cores['reset']}" # Retorna o texto com a cor, depois encerra o código (reset), voltando a cor normal
+
 # Função para adicionar o ponto na lista de registros do funcionário
 def adicionar_ponto(cod, tipo):
     try:
         agora = datetime.now(fuso_horario) # informa a data e hora configurada
         registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
     except Exception as e:
-        print(f"Erro ao registrar ponto: {e}")
+        print(cor(f"❌ Erro ao registrar ponto: {e}", "vermelho"))
 
 # Função para ver os registros do funcionário
 def ver_registros(cod):
     try:
-        print(f"\n---------- Registros de {usuario} ----------")
+        print(cor(f"\n📋 REGISTROS DE {usuario.upper()}", "negrito"))
         if registros_ponto[cod]: # Verifica se tem registros do funcionário
             for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
                 print(f"{tipo}: {horario}") 
@@ -69,22 +83,22 @@ def ver_registros(cod):
             print("Nenhum ponto registrado ainda !")
         print("---------------------------------------------\n")
     except Exception as e:
-        print(f"Erro ao exibir registros: {e}")
+        print(cor("⚠️ Nenhum ponto registrado ainda!", "amarelo"))
         
 # Função para verificar o usuário
 def verificar_usuario(cod):
     return codigo_turma.get(cod, None) # verifica se o cod existe na tabela funcionários
 
-print("-----------------Folha Ponto------------------")
+print(cor("💼  BEM-VINDO AO SISTEMA DE FOLHA DE PONTO", "negrito"))
 usuario = None
 while usuario is None: 
-    cod = input("Qual seu CV: ")
+    cod = input("🔐 Qual seu CV: ")
     usuario = verificar_usuario(cod)
     if usuario is None: 
-        print("Usuário inexistente!! Tente novamente.")
+        print("🚫 Usuário inexistente!! Tente novamente.")
 
-print(f"Bem Vindo(a), {usuario}!")
-print("--------------Registre seu ponto--------------")
+print(f"\n👋 Bem Vindo(a), {usuario}!")
+print(cor("📲 Escolha uma opção para registrar seu ponto:", "negrito"))
 print("1) Entrada")
 print("2) Saída intervalo")
 print("3) Retorno intervalo")
@@ -92,10 +106,10 @@ print("4) Saída")
 print("5) Ver registros")
 
 while True:
-    resposta = input("Opção (1-5) ou 'sair' para encerrar: ").strip() # strip remove espaços em branco 
+    resposta = input("👉 Opção (1-5) ou 'sair' para encerrar: ").strip() # strip remove espaços em branco 
     
     if resposta.lower() == 'sair':
-        print("Encerrando o registro de ponto !")
+        print("👋 Até logo! Encerrando o registro de ponto !")
         break
 
     if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
@@ -108,8 +122,8 @@ while True:
         tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
         adicionar_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
         agora = datetime.now(fuso_horario) # informa a data e hora configurada
-        print(f"Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}") # formata a data e hora
+        print(cor(f"🕒 Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}\n", "verde"))
     elif resposta == "5":
         ver_registros(cod) # Exibe os registros do funcionário
     else:
-        print("Opção inválida! Tente novamente.")
+        print(cor("⚠️ Opção inválida! Digite um número de 1 a 5 ou 'sair'.\n", "amarelo"))
