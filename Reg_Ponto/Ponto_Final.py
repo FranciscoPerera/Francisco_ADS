@@ -75,7 +75,7 @@ def ver_registros(cod):
         print(cor(f"\n📋 REGISTROS DE {usuario.upper()}", "negrito"))
         if registros_ponto[cod]: # Verifica se tem registros do funcionário
             for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
-                print(f"{tipo}: {horario}") 
+                print(cor(f"\033[1m {tipo} \033[0m: {horario}", "negrito")) # Deixa o o tipo do registro em negrito e depois da um reset, para o resto
         else:
             print("Nenhum ponto registrado ainda !")
         print("---------------------------------------------\n")
