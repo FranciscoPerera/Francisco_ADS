@@ -67,20 +67,17 @@ def adicionar_ponto(cod, tipo):
         agora = datetime.now(fuso_horario) # informa a data e hora configurada
         registros_ponto[cod].append((tipo, agora.strftime("%d/%m/%Y %H:%M:%S"))) # formata a data e hora
     except Exception as e:
-        print(cor(f"❌ Erro ao registrar ponto: {e}", "vermelho"))
+        print(cor(f"❌  Erro ao registrar ponto: {e}", "vermelho"))
 
 # Função para ver os registros do funcionário
 def ver_registros(cod):
-    try:
-        print(cor(f"\n📋 REGISTROS DE {usuario.upper()}", "negrito"))
-        if registros_ponto[cod]: # Verifica se tem registros do funcionário
-            for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
-                print(cor(f"\033[1m {tipo} \033[0m: {horario}", "negrito")) # Deixa o tipo do registro em negrito e depois da um reset, para o resto
-        else:
-            print("Nenhum ponto registrado ainda !")
-        print("---------------------------------------------\n")
-    except Exception as e:
-        print(cor("⚠️ Nenhum ponto registrado ainda!", "amarelo"))
+    print(cor(f"\n📋 REGISTROS DE {usuario.upper()}", "negrito"))
+    if registros_ponto[cod]: # Verifica se tem registros do funcionário
+        for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
+            print(cor(f"\033[1m {tipo} \033[0m: {horario}", "negrito")) # Deixa o tipo do registro em negrito e depois da um reset, para o resto
+    else:
+        print(cor("⚠️  Nenhum ponto registrado ainda!", "amarelo"))
+    print("---------------------------------------------\n")
         
 # Função para verificar o usuário
 def verificar_usuario(cod):
@@ -89,13 +86,13 @@ def verificar_usuario(cod):
 print(cor("💼  BEM-VINDO AO SISTEMA DE FOLHA DE PONTO", "negrito"))
 usuario = None
 while usuario is None: 
-    cod = input("🔐 Qual seu CV: ")
+    cod = input("🔐  Qual seu CV: ")
     usuario = verificar_usuario(cod)
     if usuario is None: 
-        print(cor("🚫 Usuário inexistente!! Tente novamente.", "vermelho"))
+        print(cor("🚫  Usuário inexistente!! Tente novamente.", "vermelho"))
 
-print(cor(f"\n👋 Bem Vindo(a),\033[1m{usuario}!\033[0m", "negrito")) # Deixa o usuario em negrito e depois da um reset, para o resto
-print(cor("📲 Escolha uma opção para registrar seu ponto:", "negrito"))
+print(cor(f"\n👋  Bem Vindo(a),\033[1m{usuario}!\033[0m", "negrito")) # Deixa o usuario em negrito e depois da um reset, para o resto
+print(cor("📲  Escolha uma opção para registrar seu ponto:", "negrito"))
 print("1) Entrada")
 print("2) Saída intervalo")
 print("3) Retorno intervalo")
@@ -103,24 +100,24 @@ print("4) Saída")
 print("5) Ver registros")
 
 while True:
-    resposta = input("👉 Opção (1-5) ou 'sair' para encerrar: ").strip() # strip remove espaços em branco 
+    resposta = input("👉  Opção (1-5) ou 'sair' para encerrar: ").strip() # strip remove espaços em branco 
     
     if resposta.lower() == 'sair':
-        print("👋 Até logo! Encerrando o registro de ponto !")
+        print("👋  Até logo! Encerrando o registro de ponto !")
         break
 
     if resposta in ["1", "2", "3", "4"]: # Verifica se a resposta está entre as opções
         tipos = {
-            "1": "✅ Entrada",
-            "2": "⏸️  Saída intervalo",
-            "3": "🔁 Retorno intervalo",
-            "4": "❌ Saída"
+            "1": "✅  Entrada",
+            "2": "⏸️   Saída intervalo",
+            "3": "🔁  Retorno intervalo",
+            "4": "❌  Saída"
         }
         tipo = tipos[resposta] # Atribui o tipo de ponto com base na resposta
         adicionar_ponto(cod, tipo) # Adiciona o ponto na lista de registros do funcionário
         agora = datetime.now(fuso_horario) # informa a data e hora configurada
-        print(cor(f"🕒 Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}\n", "verde"))
+        print(cor(f"🕒  Ponto registrado: {tipo} às {agora.strftime('%d/%m/%Y %H:%M:%S')}\n", "verde"))
     elif resposta == "5":
         ver_registros(cod) # Exibe os registros do funcionário
     else:
-        print(cor("⚠️ Opção inválida! Digite um número de 1 a 5 ou 'sair'.\n", "amarelo"))
+        print(cor("⚠️  Opção inválida! Digite um número de 1 a 5 ou 'sair'.\n", "amarelo"))
