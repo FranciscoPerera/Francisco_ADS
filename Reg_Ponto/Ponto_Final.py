@@ -71,10 +71,10 @@ def adicionar_ponto(cod, tipo):
 
 # Função para ver os registros do funcionário
 def ver_registros(cod):
-    print(cor(f"\n📋 REGISTROS DE {usuario.upper()}", "negrito"))
+    print(cor(f"\n 📋  REGISTROS DE {usuario.upper()}:", "negrito"))
     if registros_ponto[cod]: # Verifica se tem registros do funcionário
         for tipo, horario in registros_ponto[cod]: # Percorre cada registro (tipo e horário) da tabela registros_ponto 
-            print(cor(f"\033[1m {tipo} \033[0m: {horario}", "negrito")) # Deixa o tipo do registro em negrito e depois da um reset, para o resto
+            print(cor(f"\033[1m {tipo}\033[0m: {horario}", "negrito")) # Deixa o tipo do registro em negrito e depois da um reset, para o resto
     else:
         print(cor("⚠️  Nenhum ponto registrado ainda!", "amarelo"))
     print("---------------------------------------------\n")
