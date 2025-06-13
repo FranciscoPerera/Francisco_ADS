@@ -91,16 +91,16 @@ while usuario is None:
     if usuario is None: 
         print(cor("🚫  Usuário inexistente!! Tente novamente.", "vermelho"))
 
-print(cor(f"\n👋  Bem Vindo(a),\033[1m{usuario}!\033[0m", "negrito")) # Deixa o usuario em negrito e depois da um reset, para o resto
+print(cor(f"\n👋  Bem Vindo(a), \033[1m{usuario}!\033[0m", "negrito")) # Deixa o usuario em negrito e depois da um reset, para o resto
 print(cor("📲  Escolha uma opção para registrar seu ponto:", "negrito"))
-print("1) Entrada")
-print("2) Saída intervalo")
-print("3) Retorno intervalo")
-print("4) Saída")
-print("5) Ver registros")
+print("1)  Entrada")
+print("2)  Saída intervalo")
+print("3)  Retorno intervalo")
+print("4)  Saída")
+print("5)  Ver registros")
 
 while True:
-    resposta = input("👉  Opção (1-5) ou 'sair' para encerrar: ").strip() # strip remove espaços em branco 
+    resposta = input(cor("👉  Opção (1-5) ou 'sair' para encerrar: ", "negrito")).strip() # strip remove espaços em branco 
     
     if resposta.lower() == 'sair':
         print("👋  Até logo! Encerrando o registro de ponto !")
