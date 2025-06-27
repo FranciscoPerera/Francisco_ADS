@@ -83,7 +83,7 @@ def ver_registros(cod):
 def verificar_usuario(cod):
     return codigo_turma.get(cod, None) # verifica se o cod existe na tabela funcionários
 
-print(cor("💼  BEM-VINDO AO SISTEMA DE FOLHA DE PONTO", "negrito"))
+print(cor("\n💼  BEM-VINDO AO SISTEMA DE FOLHA DE PONTO", "negrito"))
 usuario = None
 while usuario is None: 
     cod = input("🔐  Qual seu CV: ")
